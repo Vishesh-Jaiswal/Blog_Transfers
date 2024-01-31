@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "udTxPSe2I9fWQBHb1dLqQfciYUiZlzijFSifIVG8AZ3t8jZ4WRHvcPTomb+kKOtBbiWlTvTVpbCLLvYTAh6dsg==",
+  "dgSpecHash": "kGAsGmIgyKD2gIFlyUrUygvobLB3LDCW2u868Cq+SekjWjB9aNYh/6iT5HzYhI/67+/Ysib8QyOc0esmVg+OiQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\2000112368\\Project\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj",
+  "projectFilePath": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\2000112368\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\2000112368\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

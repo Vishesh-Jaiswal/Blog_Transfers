@@ -12,13 +12,17 @@ function RegisterUser(){
     const [role,setRole] = useState("");
     const [userNameError,setUserNameError]=useState("");
     const [userEmailError,setUserEmailError]=useState("");
-    const [validEmaid,setValidEmail]=useState(false);
+    const [validEmail,setValidEmail]=useState(false);
     const [passwordError,setUserPasswordError]=useState("");
     const [repasswordError,setUserRePasswordError]=useState("");
+    const [noRoleError,setNoRoleError]=useState("");
+    const [passMismatch,setPassMismatch]=useState("");
     const emailFormat=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var checkUserData = ()=>{
-        if(emailFormat.test(userEmail)){
-            setValidEmail
+        if(!emailFormat.test(userEmail)){
+            setValidEmail("Invalid Email");
+            setTimeout(() => setValidEmail(""), 4000);
+            return false;
         }
         if(userEmail==='')
         {
@@ -38,10 +42,20 @@ function RegisterUser(){
             setTimeout(() => setUserPasswordError(""), 4000);
             return false;
         }
-        if(password==='')
+        if(repassword==='')
         {
             setUserRePasswordError("RePassword cannot be empty");
             setTimeout(() => setUserRePasswordError(""), 4000);
+            return false;
+        }
+        if(password!=repassword){
+            setPassMismatch("Passwords do not match");
+            setTimeout(()=> setPassMismatch(""),4000);
+            return false;
+        }
+        if(role!='Blogger' && role!='Reader'){
+            setNoRoleError("No Role Selected");
+            setTimeout(()=> setNoRoleError(""),4000);
             return false;
         }
            
@@ -86,6 +100,7 @@ function RegisterUser(){
                 <input type="text" required value={userEmail}
                     onChange={(e) => { setUserEmail(e.target.value) }} />
                     {userEmailError && <label className="alert alert-danger">{userEmailError}</label>}
+                    {validEmail && <label className="alert alert-danger">{validEmail}</label>}
                 <label>Email Address</label>
             </div>
             <div className="field">
@@ -106,6 +121,7 @@ function RegisterUser(){
                     {repasswordError && <label className="alert alert-danger">{repasswordError}</label>}
                     <label>Re-Type Password</label>
             </div>
+            {passMismatch && <label className="alert alert-danger">{passMismatch}</label>}
             <div className="field">
                 <select className="form-select" onChange={(e)=>{setRole(e.target.value)}}>
                     <option className="options" value="select">Select Role</option>
@@ -114,6 +130,7 @@ function RegisterUser(){
                     )}
                 </select>
             </div>
+            {noRoleError && <label className="alert alert-danger">{noRoleError}</label>}
             <div className="field">
                 <input type="button" value="Sign Up" onClick={signUp}/>
             </div>
