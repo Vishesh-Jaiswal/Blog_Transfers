@@ -1,9 +1,10 @@
 import { useState } from "react";
 import './UserRegistration.css';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 function RegisterUser(){
+    const navigate = useNavigate();
     const roles =["Blogger","Reader"];
     const [userEmail,setUserEmail] = useState("");
     const [userName,setUserName] = useState("");
@@ -13,27 +14,35 @@ function RegisterUser(){
     const [userNameError,setUserNameError]=useState("");
     const [userEmailError,setUserEmailError]=useState("");
     const [validEmail,setValidEmail]=useState(false);
+    const [validName,setValidName]=useState(false);
     const [passwordError,setUserPasswordError]=useState("");
     const [repasswordError,setUserRePasswordError]=useState("");
     const [noRoleError,setNoRoleError]=useState("");
     const [passMismatch,setPassMismatch]=useState("");
     const emailFormat=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const nameFormat=/^[a-zA-Z]+$/;
     var checkUserData = ()=>{
-        if(!emailFormat.test(userEmail)){
-            setValidEmail("Invalid Email");
-            setTimeout(() => setValidEmail(""), 4000);
-            return false;
-        }
         if(userEmail==='')
         {
             setUserEmailError("User Email cannot be empty");
             setTimeout(() => setUserEmailError(""), 4000);
             return false;
         }
+        if(!emailFormat.test(userEmail)){
+            setValidEmail("Invalid Email a big line that says something");
+            setTimeout(() => setValidEmail(""), 4000);
+            return false;
+        }
+        
         if(userName==='')
         {
             setUserNameError("User Name cannot be empty");
             setTimeout(() => setUserNameError(""), 4000);
+            return false;
+        }
+        if(!nameFormat.test(userName)){
+            setValidName("Give Proper Name");
+            setTimeout(() => setValidName(""), 4000);
             return false;
         }
         if(password==='')
@@ -78,11 +87,7 @@ function RegisterUser(){
         .then((userData)=>{
             console.log(userData)
             alert('Registration Successfull. Visit Login page');
-            setUserEmail("");
-            setUserName("");
-            setPassword("");
-            setrePassword("");
-            setRole("");
+            navigate('/');
         })
         .catch((err)=>{
             console.log(err)
@@ -100,14 +105,15 @@ function RegisterUser(){
                 <input type="text" required value={userEmail}
                     onChange={(e) => { setUserEmail(e.target.value) }} />
                     {userEmailError && <label className="alert alert-danger">{userEmailError}</label>}
-                    {validEmail && <label className="alert alert-danger">{validEmail}</label>}
-                <label>Email Address</label>
+                    {!userEmailError && validEmail && <label className="alert alert-danger">{validEmail}</label>}
+                    {!userEmailError && !validEmail && (<label>Email Address</label>)}
             </div>
             <div className="field">
                 <input type="text" required value={userName}
                     onChange={(e) => {setUserName(e.target.value)}}/>
-                   {userNameError && <label className="alert alert-danger">{userNameError}</label>}
-                <label>User Name</label>
+                    {userNameError && <label className="alert alert-danger">{userNameError}</label>}
+                    {!userNameError && validName && <label className="alert alert-danger">{validName}</label>}
+                    {!userNameError && !validName && (<label>User Name</label>)}
             </div>
             <div className="field">
                 <input type="password" required value={password}

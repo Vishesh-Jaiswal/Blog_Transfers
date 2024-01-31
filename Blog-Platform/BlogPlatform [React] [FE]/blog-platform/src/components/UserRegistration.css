@@ -10,6 +10,10 @@
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
+.alert{
+  display: inline-flex;
+  padding: 5px !important;
+}
 .wrapper .title{
   font-size: 35px;
   font-weight: 600;
@@ -27,6 +31,8 @@
   height: 50px;
   width: 100%;
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
   position: relative;
 }
 .wrapper .registerForm .field input{
