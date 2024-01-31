@@ -11,7 +11,7 @@ function RegisterUser(){
     const [repassword,setrePassword] = useState("");
     const [role,setRole] = useState("");
     var setUsernameError=useState("");
-    var checkUSerData = ()=>{
+    var checkUserData = ()=>{
         if(userEmail==='')
         {
             setUsernameError("Username cannot be empty");
@@ -31,7 +31,7 @@ function RegisterUser(){
     }
     const signUp = (event)=>{
         event.preventDefault();
-        var checkData = checkUSerData();
+        var checkData = checkUserData();
         if(checkData===false)
         {
             alert('please check your data')

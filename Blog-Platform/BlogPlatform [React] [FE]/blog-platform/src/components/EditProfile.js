@@ -9,6 +9,21 @@ function EditProfile({ userEmail, onCancel, onUpdate }) {
     profilePicture: null,
     dateofBirth: "",
   });
+
+  const [minDate,setMinDate]=useState('');
+  const [maxDate,setMaxDate]=useState('');
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const maxDate = new Date(currentDate);
+    maxDate.setFullYear(maxDate.getFullYear() - 13);
+    setMaxDate(maxDate.toISOString().split('T')[0]);
+ 
+    const minDate = new Date(currentDate);
+    minDate.setFullYear(minDate.getFullYear() - 80);
+    setMinDate(minDate.toISOString().split('T')[0]);
+  },[]);
+
   const genderOptions = ["Male", "Female", "Other"];
 
   useEffect(() => {
@@ -55,6 +70,7 @@ function EditProfile({ userEmail, onCancel, onUpdate }) {
       console.error("Error updating user profile:", error);
     }
   };
+  
 
   return (
     <div className="MainEdit">
@@ -96,6 +112,7 @@ function EditProfile({ userEmail, onCancel, onUpdate }) {
             />
           </label>
           {/* Enter DOB */}
+          
           <label>
             Date of Birth:
             <input
@@ -103,7 +120,8 @@ function EditProfile({ userEmail, onCancel, onUpdate }) {
               name="dateofBirth"
               value={formData.dateofBirth}
               onChange={handleInputChange}
-              maxDate=
+              min={minDate}
+              max={maxDate}
             />
           </label>
           <div className="edit-profile-buttons">
