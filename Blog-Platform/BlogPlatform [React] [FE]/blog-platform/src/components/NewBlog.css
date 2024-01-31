@@ -1,0 +1,145 @@
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+    border-radius: 6px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: rgb(190, 42, 163);
+    border-radius: 6px;
+}
+.MainBody{
+    background-image: url(/public/images/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.blogFormCreate{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin: 60px auto;
+    height: 78vh;
+}
+.categoryContainer1{
+    width: 20%;
+}
+.NewBlogArea{
+    width: 100%;
+    padding-left: 30px;
+}
+
+.categoryHolder{
+    background-color: white;
+    height: 80px;
+    width: 98%;
+    border-radius: 12px;
+}
+#title{
+    width: 98%;
+    font-weight: bold;
+    text-overflow:inherit;
+}
+#Category{
+    color:#9b34e7;
+    background-color: white;
+    border-radius: 12px;
+    height: 35px;
+    text-align: center;
+}
+
+.categoryContainer {
+    padding-left: 6px;
+    padding-right: 11px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    gap: 5px;
+    overflow-y: auto;
+    max-height: 530px;
+}
+.categoryContainer button {
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    box-sizing: border-box;
+    cursor: pointer;
+  }  
+      
+.categoryContainer button:nth-child(odd) {
+    margin-right: auto;
+}
+
+.categoryContainer button:nth-child(even) {
+    margin-left: auto;
+    width: fit-content;
+}
+
+.contentHolder{
+    width: 99%;
+}
+.contentHolder .form-control{
+    width: 99%;
+    max-height: 380px;
+    height: 350px;
+}
+
+.blogButtons{
+    width: 99%;
+    height: 50px;
+}
+
+.blogButtons .btn{
+    float: right;
+}
+
+.selectedCategories button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+    #Category {
+        width: fit-content;
+    }
+
+    .categoryContainer {
+        width: 150px;
+        max-width: 150px;
+    }
+
+    .categoryContainer button {
+        float: left;
+        margin: 0;
+        width: fit-content;
+      }
+      .categoryContainer button:nth-child(odd) {
+        margin: 0;
+    }
+    
+    .categoryContainer button:nth-child(even) {
+        margin: 0;
+    }
+
+    .NewBlogArea{
+        width: 70%;
+        margin-left: 40px;
+    }
+}

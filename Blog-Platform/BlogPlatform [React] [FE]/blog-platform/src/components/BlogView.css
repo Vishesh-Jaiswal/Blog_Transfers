@@ -1,0 +1,158 @@
+.MainBlogView{
+    background-color: #8216cd;
+    background-image: url(/public/images/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.singleBlogContainer {
+  left: 20px;
+  height: 85%;
+  max-height: 85%;
+  max-width: 96%;
+  width: 96%;
+  margin:30px auto  auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+}
+
+  
+.titleofBlog{
+  color: #000000;
+  border-radius: 13px;
+  padding-left: 13px;
+}
+.editBlog{
+  float: right;
+  border: none;
+  background-color: #e8e8e8;
+  color: #555;
+  font-style: italic;
+  text-decoration: none;
+}
+.contentofBlog{
+  border-radius: 13px;
+  min-height: 40%;
+  height: 80%;
+  max-height: 80%;
+  padding: 10px 10px 0 10px;
+  overflow-x: auto;
+}
+
+.author{
+  margin: 0 auto;
+  color: grey;
+}
+
+.commentContainer1{
+  background-color: inherit;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  width: 100%;
+}
+
+.commentContainer2{
+  background-color: #e8e8e8;
+  border-radius: 12px;
+  width: 96%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.comment-Link{
+  text-decoration: none;
+  color: #555;
+  font-size: 25px;
+  margin-left:20px;
+  font-family: bahnschrift;
+}
+
+.newcomment{
+  display: grid;
+  width: 100%;
+  place-items: center;
+}
+.singleComment{
+  background-color: white;
+  border-radius: 16px;
+  padding-left: 10px;
+  margin:10px 15px 15px 0;
+  color: #555;
+  font-size: 13px;
+}
+
+.actualComment{
+  color: black;
+  font-style: italic;
+  font-size: 18px;
+  height: 90px;
+  max-height: 90px;
+  overflow-x: auto;
+}
+
+#noComments{
+  padding-left: 20px;
+}
+
+.blogLikeButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.blogLikeButton.likedBlog i {
+  color: blue;
+}
+
+.commentLikeButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.commentLikeButton.likedComment i {
+  color: blue;
+}
+
+.buttonandTitle{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 6px;
+  padding-right: 6px;
+}
+#forCommentEdit{
+  border: none;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  font-style: italic;
+}
+#hrrule{
+  z-index: 1;
+}
+.editeofComment{
+  width: 98%;
+  border-radius: 16px;
+  margin-top: 10px;
+}
+.confirmEditButton{
+  border-radius: 16px;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+.cancelButton{
+  border-radius: 16px;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  margin-left: 8px;
+}
+.buttonsnew{
+  text-align: center;
+}
