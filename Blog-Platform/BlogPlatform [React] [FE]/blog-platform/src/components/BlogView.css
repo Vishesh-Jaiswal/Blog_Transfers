@@ -6,6 +6,9 @@
     background-repeat: no-repeat;
     height: 100vh;
 }
+.buttonsforComment{
+  display: flex;
+}
 .singleBlogContainer {
   left: 20px;
   height: 85%;

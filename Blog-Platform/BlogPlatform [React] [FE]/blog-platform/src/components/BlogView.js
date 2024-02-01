@@ -5,6 +5,7 @@ import './BlogView.css';
 import NewComment from "./NewComment";
 import Navbar from "./Navbar";
 import moment from "moment/moment";
+import ReportComment from "./ReportComment";
 
 function BlogView() {
   const { blogId } = useParams();
@@ -20,6 +21,21 @@ function BlogView() {
   const [commentLikes, setCommentLikes] = useState([]);
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editedCommentContent, setEditedCommentContent] = useState("");
+  const [isReportCommentModalOpen, setIsReportCommentModalOpen] = useState(false);
+  var currentEmail = userEmail;
+
+
+  const handleReportComment = () => {
+    setIsReportCommentModalOpen(true);
+  };
+
+  const handleCancelReportCommnet = () => {
+    setIsReportCommentModalOpen(false);
+  };
+
+  const handleConfirmReport = () =>{
+    setIsReportCommentModalOpen(false);
+  }
 
 
   //Fetches the blog, it's comments and bloglikes
@@ -220,6 +236,9 @@ function BlogView() {
   return (
     <div className="MainBlogView">
       <Navbar />
+      {isReportCommentModalOpen && (
+        <ReportComment userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleReportComment}/>
+      )}
       {/* Shows a single blog */}
       <div className="singleBlogContainer">
         <div>
@@ -306,6 +325,7 @@ function BlogView() {
                       {/* Non-Editable Comment List */}
                       <div className="buttonandTitle">
                         <Link to={`/profile/${comment.userEmail}`}>{comment.userEmail}</Link><br />
+                        <div className="buttonsforComment">
                         {comment.userEmail === userEmail && (
                           <div>
                             <button id="forCommentEdit" onClick={() => handleEditComment(comment.commentId)}>
@@ -316,6 +336,9 @@ function BlogView() {
                             </button>
                         </div>
                         )}
+                        <button id="forCommentEdit" onClick={() => handleReportComment(comment.commentId)}>
+                          Report
+                        </button></div>
                       </div>
                       <div className="actualComment"><p>{comment.content}</p></div> <br />
                       {moment(comment.commentedAt).format("DD/MM/YY HH:mm")}

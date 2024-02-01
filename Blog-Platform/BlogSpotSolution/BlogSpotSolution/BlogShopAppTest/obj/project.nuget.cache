@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iPDQsP5pdY1AsbTB4AOvY/JTzEdqPZh8IHQsAxwmVisTQ7x6aamxGV/hxCO3tvx3SFdykvNWokfOusOCjChjoA==",
+  "dgSpecHash": "XDSRTmaS8hwbY8jmwuwlj6cRxfXs1O1BiivcAq/ikxDPXHlxnB0cFnfL+zXMiA8OIoj11cWML2Ua3phs9HgmXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\BlogShopAppTest.csproj",
+  "projectFilePath": "C:\\Users\\2000112368\\source\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\BlogShopAppTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\2000112368\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\2000112368\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
