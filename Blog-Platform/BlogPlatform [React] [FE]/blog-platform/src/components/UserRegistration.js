@@ -2,6 +2,7 @@ import { useState } from "react";
 import './UserRegistration.css';
 import axios from "axios";
 import { Link,useNavigate } from "react-router-dom";
+import emailjs from 'emailjs-com';
 
 function RegisterUser(){
     const navigate = useNavigate();
@@ -87,11 +88,25 @@ function RegisterUser(){
         .then((userData)=>{
             console.log(userData)
             alert('Registration Successfull. Visit Login page');
+            sendEmail(userEmail);
             navigate('/');
         })
         .catch((err)=>{
             console.log(err)
         })
+    }
+
+    function sendEmail(tomail){
+        const templateParams={
+            to_email: tomail
+        };
+
+        emailjs.send('service_yfny012', 'template_7zjvlzd', templateParams, 'xVPy4IUSSejVAXlOG')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
     }
     
     return(
