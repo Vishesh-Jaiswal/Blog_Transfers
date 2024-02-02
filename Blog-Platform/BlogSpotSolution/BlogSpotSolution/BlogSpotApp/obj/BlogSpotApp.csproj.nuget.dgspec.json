@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2000112368\\source\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj": {}
+    "C:\\Users\\2000112368\\source\\repos\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2000112368\\source\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj": {
+    "C:\\Users\\2000112368\\source\\repos\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2000112368\\source\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj",
+        "projectUniqueName": "C:\\Users\\2000112368\\source\\repos\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj",
         "projectName": "BlogSpotApp",
-        "projectPath": "C:\\Users\\2000112368\\source\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj",
+        "projectPath": "C:\\Users\\2000112368\\source\\repos\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj",
         "packagesPath": "C:\\Users\\2000112368\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2000112368\\source\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\obj\\",
+        "outputPath": "C:\\Users\\2000112368\\source\\repos\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
