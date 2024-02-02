@@ -41,6 +41,24 @@ namespace BlogSpotApp.Controllers
             return BadRequest(errorMessage);
         }
 
+        [HttpPost]
+        [Route("ReportComment")]
+        public ActionResult ReportComment(Comment comment)
+        {
+            string errorMessage;
+            try
+            {
+                var result = _commentService.ReportComment(comment);
+                _logger.LogInformation("Comment Reported");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
+        }
+
 
         [HttpPost]
         [Route("EditComment")]

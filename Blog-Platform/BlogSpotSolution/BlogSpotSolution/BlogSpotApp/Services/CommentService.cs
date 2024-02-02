@@ -42,6 +42,13 @@ namespace BlogSpotApp.Services
             return null;
         }
 
+        public Comment? ReportComment(Comment comment)
+        {
+            Comment commentToReport=new Comment();
+            commentToReport.ReportedComments?.Add(comment);
+            return comment;
+        }
+
         public Comment? EditComment(Comment comment)
         {
             var checkCommenter = _commentRepository.GetAll()?.SingleOrDefault(c => c.CommentId == comment.CommentId);
@@ -56,6 +63,13 @@ namespace BlogSpotApp.Services
                 throw new CouldNotEdit();
             }
             return comment;
+        }
+
+        public List<Comment>? ReportedComments()
+        {
+            // Assuming you have a list of all comments stored in a variable named 'allComments'
+            //List<Comment> unreportedComments = allComments.Where(c => c.ReportedComments == null || c.ReportedComments.Count == 0).ToList();
+            List<Comment> reportedComments = Comment.Where(c => c.ReportedComments != null && c.ReportedComments.Count > 0).ToList();
         }
 
         public List<Comment>? GetCommentsById(int id)

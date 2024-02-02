@@ -21,7 +21,7 @@ function RegisterUser(){
     const [noRoleError,setNoRoleError]=useState("");
     const [passMismatch,setPassMismatch]=useState("");
     const emailFormat=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const nameFormat=/^[a-zA-Z]+$/;
+    const nameFormat=/^[a-zA-Z\s]*$/;
     var checkUserData = ()=>{
         if(userEmail==='')
         {
@@ -70,7 +70,7 @@ function RegisterUser(){
         }
            
     }
-    const signUp = (event)=>{
+    const signUp = async (event)=>{
         event.preventDefault();
         var checkData = checkUserData();
         if(checkData===false)

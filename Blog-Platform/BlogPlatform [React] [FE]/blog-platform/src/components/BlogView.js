@@ -237,7 +237,7 @@ function BlogView() {
     <div className="MainBlogView">
       <Navbar />
       {isReportCommentModalOpen && (
-        <ReportComment userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleReportComment}/>
+        <ReportComment userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleConfirmReport}/>
       )}
       {/* Shows a single blog */}
       <div className="singleBlogContainer">

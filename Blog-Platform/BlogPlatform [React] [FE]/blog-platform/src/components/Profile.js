@@ -8,18 +8,19 @@ import EditProfile from "./EditProfile";
 import moment from "moment/moment";
 
 function Profile() {
+    
+    const navigate=useNavigate();
     const { userEmail: currentEmail } = useParams();
+    var currentUserEmail = localStorage.getItem('userEmail');
     const [userBlogs, setUserBlogs] = useState([]);
     const [userComments, setUserComments] = useState([]);
     const [userInfo, setUserInfo] = useState({});
     const [userFollowerInfo, setFollowerUserInfo] = useState([]);
     const [userFollowingInfo, setFollowingUserInfo] = useState([]);
-    const role = userInfo.role;
     const [isFollowing, setIsFollowing] = useState(false);
-    var currentUserEmail = localStorage.getItem('userEmail');
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-    const navigate=useNavigate();
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const role = userInfo.role;
 
   const handleEditProfile = () => {
     setIsEditModalOpen(true);
