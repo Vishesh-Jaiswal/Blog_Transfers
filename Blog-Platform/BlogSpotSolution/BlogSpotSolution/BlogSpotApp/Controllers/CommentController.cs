@@ -41,7 +41,7 @@ namespace BlogSpotApp.Controllers
             return BadRequest(errorMessage);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("ReportComment")]
         public ActionResult ReportComment(Comment comment)
         {
@@ -53,6 +53,41 @@ namespace BlogSpotApp.Controllers
                 return Ok(result);
             }
             catch (Exception e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
+        }
+        [HttpPut]
+        [Route("ApproveReportComment/{commentID}")]
+        public ActionResult ApproveReportComment(int commentID)
+        {
+            string errorMessage;
+            try
+            {
+                var result = _commentService.ApproveReportComment(commentID);
+                _logger.LogInformation("Comment Reported");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
+        }
+
+        [HttpGet]
+        [Route("ReportedComments")]
+        public ActionResult GetReportedComments()
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _commentService.ReportedComments();
+                _logger.LogInformation("Fetched all the reported comments");
+                return Ok(result);
+            }
+            catch (NoBlogsAvailableException e)
             {
                 errorMessage = e.Message;
             }

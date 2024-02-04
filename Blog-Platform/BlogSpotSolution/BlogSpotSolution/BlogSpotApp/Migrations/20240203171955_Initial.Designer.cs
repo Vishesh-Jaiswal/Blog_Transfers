@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogSpotApp.Migrations
 {
     [DbContext(typeof(BlogSpotContext))]
-    [Migration("20240202043852_newone")]
-    partial class newone
+    [Migration("20240203171955_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,6 +128,12 @@ namespace BlogSpotApp.Migrations
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReportReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ReportedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ReportedBy")
                         .HasColumnType("nvarchar(max)");

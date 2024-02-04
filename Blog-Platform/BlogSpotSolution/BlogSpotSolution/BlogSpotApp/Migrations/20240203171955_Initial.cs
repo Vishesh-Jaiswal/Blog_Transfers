@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlogSpotApp.Migrations
 {
-    public partial class newone : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -148,6 +148,8 @@ namespace BlogSpotApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReportedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReportedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ReportReason = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CommentedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserEmail = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BlogId = table.Column<int>(type: "int", nullable: false)

@@ -127,6 +127,12 @@ namespace BlogSpotApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ReportReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ReportedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ReportedBy")
                         .HasColumnType("nvarchar(max)");
 

@@ -10,22 +10,6 @@ function ReportComment({ userEmail, onCancel, onUpdate }) {
     dateofBirth: "",
   });
 
-  const [minDate,setMinDate]=useState('');
-  const [maxDate,setMaxDate]=useState('');
-
-  useEffect(() => {
-    const currentDate = new Date();
-    const maxDate = new Date(currentDate);
-    maxDate.setFullYear(maxDate.getFullYear() - 13);
-    setMaxDate(maxDate.toISOString().split('T')[0]);
- 
-    const minDate = new Date(currentDate);
-    minDate.setFullYear(minDate.getFullYear() - 80);
-    setMinDate(minDate.toISOString().split('T')[0]);
-  },[]);
-
-  const genderOptions = ["Male", "Female", "Other"];
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,9 +43,6 @@ function ReportComment({ userEmail, onCancel, onUpdate }) {
       const formDataForUpdate = new FormData();
       formDataForUpdate.append("userEmail", userEmail);
       formDataForUpdate.append("bio", formData.bio);
-      formDataForUpdate.append("gender", formData.gender);
-      formDataForUpdate.append("dateofBirth", formData.dateofBirth);
-      formDataForUpdate.append("profilePicture", formData.profilePicture);
 
       await axios.post("http://localhost:5273/api/Blogger/Edit", formDataForUpdate);
 
@@ -84,44 +65,6 @@ function ReportComment({ userEmail, onCancel, onUpdate }) {
               name="bio"
               value={formData.bio}
               onChange={handleInputChange}
-            />
-          </label>
-          {/* Gender */}
-          <label>
-            Gender:
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleInputChange}
-            >
-              <option value="">Select Gender</option>
-              {genderOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
-          {/* Profile Picture */}
-          <label>
-            Profile Picture:
-            <input
-              type="file"
-              name="profilePicture"
-              onChange={handleInputChange}
-            />
-          </label>
-          {/* Enter DOB */}
-          
-          <label>
-            Date of Birth:
-            <input
-              type="date"
-              name="dateofBirth"
-              value={formData.dateofBirth}
-              onChange={handleInputChange}
-              min={minDate}
-              max={maxDate}
             />
           </label>
           <div className="edit-profile-buttons">

@@ -10,5 +10,7 @@ namespace BlogSpotApp.Interfaces
         List<Comment>? GetCommentsByEmail(string email);
         Comment? DeleteComment(Comment comment);
         Comment? ReportComment(Comment comment);
+        List<Comment>? ReportedComments();
+        Comment? ApproveReportComment(int id);
     }
 }
