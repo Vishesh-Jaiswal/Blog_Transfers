@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogSpotApp.Migrations
 {
     [DbContext(typeof(BlogSpotContext))]
-    [Migration("20240203171955_Initial")]
-    partial class Initial
+    [Migration("20240205063511_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,14 +119,13 @@ namespace BlogSpotApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"), 1L, 1);
 
-                    b.Property<int>("BlogId")
+                    b.Property<int?>("BlogId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CommentedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReportReason")
@@ -139,7 +138,6 @@ namespace BlogSpotApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserEmail")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("CommentId");
@@ -290,14 +288,12 @@ namespace BlogSpotApp.Migrations
                     b.HasOne("BlogSpotApp.Models.Blog", "BlogComment")
                         .WithMany("Comments")
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BlogSpotApp.Models.User", "Commenter")
                         .WithMany("UserComments")
                         .HasForeignKey("UserEmail")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("BlogComment");
 

@@ -331,7 +331,7 @@ function BlogView() {
                             <button id="forCommentEdit" onClick={() => handleEditComment(comment.commentId)}>
                               Edit
                             </button>
-                            <button id="forCommentEdit" onClick={() => handleDeleteComment(comment.commentId)}>
+                            <button id="forCommentEdit" onClick={handleDeleteComment}>
                               Delete
                             </button>
                         </div>

@@ -2,54 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './EditProfile.css';
 
-function ReportComment({ userEmail, onCancel, onUpdate }) {
-  const [formData, setFormData] = useState({
-    bio: "",
-    gender: "",
-    profilePicture: null,
-    dateofBirth: "",
-  });
+function ReportComment({ userEmail, onCancel, onReport }) {
+  const [reportReason,setReportReason]=useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const userInfoResponse = await axios.get(
-          `http://localhost:5273/api/Blogger/user/${userEmail}`
-        );
-        setFormData({
-          bio: userInfoResponse.data.bio || "",
-          gender: userInfoResponse.data.gender || "",
-          profilePicture: null,
-          dateofBirth: userInfoResponse.data.dateofBirth || "",
-        });
-      } catch (error) {
-        console.error("Error fetching user data for edit:", error);
-      }
-    };
-
-    fetchData();
-  }, [userEmail]);
-
-  const handleInputChange = (e) => {
-    const { name, value, type } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "file" ? e.target.files[0] : value,
-    });
-  };
-
-  const handleUpdateProfile = async () => {
+  const handleReportComment = async () => {
     try {
-      const formDataForUpdate = new FormData();
-      formDataForUpdate.append("userEmail", userEmail);
-      formDataForUpdate.append("bio", formData.bio);
-
-      await axios.post("http://localhost:5273/api/Blogger/Edit", formDataForUpdate);
-
-      onUpdate();
-    } catch (error) {
-      console.error("Error updating user profile:", error);
-    }
+      await axios.put("http://localhost:5273/api/Comment/ReportComment",
+        {
+          reportReason:reportReason,
+          reportedBy:userEmail
+        })
+        onReport();
+      } catch (error) {
+        console.error("Error updating content:", error);
+      }
   };
   
 
@@ -57,18 +23,16 @@ function ReportComment({ userEmail, onCancel, onUpdate }) {
     <div className="MainEdit">
       <div className="edit-profile-modal">
         <div className="edit-profile-form">
-          <h2>Edit Profile</h2>
+          <h2>Report Comment</h2>
           {/* Enter Bio */}
           <label>
-            Bio:
-            <textarea
-              name="bio"
-              value={formData.bio}
-              onChange={handleInputChange}
+            Report Reason
+            <input type="text" required value={reportReason}
+              onChange={(e) => {setReportReason(e.target.value)}}
             />
           </label>
           <div className="edit-profile-buttons">
-            <button onClick={handleUpdateProfile}>Update Profile</button>
+            <button onClick={handleReportComment}>Report</button>
             <button onClick={onCancel}>Cancel</button>
           </div>
         </div>
