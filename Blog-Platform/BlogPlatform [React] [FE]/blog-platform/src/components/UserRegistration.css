@@ -13,6 +13,8 @@
 .alert{
   display: inline-flex;
   padding: 5px !important;
+  background-color: none !important;
+  border:none !important;
 }
 .wrapper .title{
   font-size: 35px;

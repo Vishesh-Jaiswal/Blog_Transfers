@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './EditProfile.css';
 
-function ReportComment({ userEmail, onCancel, onReport }) {
+function ReportComment({ commentIdtoReport,userEmail, onCancel, onReport }) {
   const [reportReason,setReportReason]=useState("");
 
   const handleReportComment = async () => {
     try {
       await axios.put("http://localhost:5273/api/Comment/ReportComment",
         {
+          commentId:commentIdtoReport,
           reportReason:reportReason,
           reportedBy:userEmail
         })

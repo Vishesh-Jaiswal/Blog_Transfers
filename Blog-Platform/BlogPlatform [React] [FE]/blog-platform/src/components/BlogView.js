@@ -20,13 +20,15 @@ function BlogView() {
   const navigate = useNavigate();
   const [commentLikes, setCommentLikes] = useState([]);
   const [editingCommentId, setEditingCommentId] = useState(null);
+  const [reportedcommentId, setReportedcommentId] = useState("");
   const [editedCommentContent, setEditedCommentContent] = useState("");
   const [isReportCommentModalOpen, setIsReportCommentModalOpen] = useState(false);
   var currentEmail = userEmail;
 
 
-  const handleReportComment = () => {
+  const handleReportComment = (commentId) => {
     setIsReportCommentModalOpen(true);
+    setReportedcommentId(commentId);
   };
 
   const handleCancelReportCommnet = () => {
@@ -237,7 +239,7 @@ function BlogView() {
     <div className="MainBlogView">
       <Navbar />
       {isReportCommentModalOpen && (
-        <ReportComment userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleConfirmReport}/>
+        <ReportComment commentIdtoReport={reportedcommentId} userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleConfirmReport}/>
       )}
       {/* Shows a single blog */}
       <div className="singleBlogContainer">
@@ -331,7 +333,7 @@ function BlogView() {
                             <button id="forCommentEdit" onClick={() => handleEditComment(comment.commentId)}>
                               Edit
                             </button>
-                            <button id="forCommentEdit" onClick={handleDeleteComment}>
+                            <button id="forCommentEdit" onClick={() => handleDeleteComment(comment.commentId)}>
                               Delete
                             </button>
                         </div>
