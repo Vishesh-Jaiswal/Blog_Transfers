@@ -2,6 +2,7 @@
 using BlogSpotApp.Models;
 using BlogSpotApp.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 
 namespace BlogSpotApp.Services
 {
@@ -85,19 +86,60 @@ namespace BlogSpotApp.Services
             return blog;
         }
 
+        public Blog? ReportBlog(Blog blog)
+        {
+            var blogToReport =_blogRepository.GetAll()?.FirstOrDefault(c => c.BlogId == blog.BlogId);
+            if (blogToReport == null)
+                return null;
+            blogToReport.ReportReason = blog.ReportReason;
+            blogToReport.ReportedBy = blog.ReportedBy;
+            blogToReport.ReportedAt = DateTime.Now;
+            var result = _blogRepository.Update(blogToReport);
+            if (result == null)
+            {
+                throw new CouldNotEdit();
+            }
+            blogToReport.ReportedBlogs?.Add(blog);
+            return blog;
+        }
+
+        public List<Blog>? ReportedBlogs()
+        {
+            var allBlogs = _blogRepository.GetAll();
+            if (allBlogs == null)
+                return null;
+            List<Blog> reportedBlogs = allBlogs.Where(c => c.ReportedAt != null).ToList();
+            if (reportedBlogs.Count == 0)
+            {
+                return null;
+            }
+            return reportedBlogs;
+        }
+
+        public Blog? ApproveReportBlog(int id)
+        {
+            var blogToApprove = _blogRepository.GetAll()?.FirstOrDefault(c => c.BlogId == id);
+            if (blogToApprove == null)
+                return null;
+            blogToApprove.ReportReason = null;
+            blogToApprove.ReportedBy = null;
+            blogToApprove.ReportedAt = null;
+            var result = _blogRepository.Update(blogToApprove);
+            blogToApprove.ReportedBlogs?.Remove(blogToApprove);
+            return blogToApprove;
+        }
+
         public List<Blog> GetBlogs()
         {
             var blogs = _blogRepository.GetAll();
             if (blogs != null)
             {
-                var sortedBlogs = blogs.OrderByDescending(blog => blog.CreationDate).ToList();
+                var unreportedBlogs = blogs.Where(c => c.ReportedAt == null);
+                var sortedBlogs = unreportedBlogs.OrderByDescending(blog => blog.CreationDate).ToList();
                 return sortedBlogs;
             }
             return new List<Blog>();
         }
-
-
-      
 
         public Blog? GetBlogById(int id)
         {
@@ -143,6 +185,7 @@ namespace BlogSpotApp.Services
 
                 throw new UnauthorizedAccessException("You are not authorized to delete this blog post.");
             }
+            blogCheck.ReportedBlogs?.Remove(blog);
             if(DeleteBlogLikeCascade(blog.BlogId)==true && DeleteCommentCascade(blog.BlogId)==true && DeleteBlogCategoryCascade(blog)==true){
                 var result = _blogRepository.Delete(blogCheck.BlogId);
                 if (result == null)

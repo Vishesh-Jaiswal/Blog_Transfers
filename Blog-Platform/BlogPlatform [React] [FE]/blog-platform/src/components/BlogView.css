@@ -25,7 +25,9 @@
   flex-direction: column;
 }
 
-  
+.blogButtons{
+  display: flex;
+}
 .titleofBlog{
   color: #000000;
   border-radius: 13px;

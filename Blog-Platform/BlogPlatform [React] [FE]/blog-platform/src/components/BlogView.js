@@ -23,6 +23,7 @@ function BlogView() {
   const [reportedcommentId, setReportedcommentId] = useState("");
   const [editedCommentContent, setEditedCommentContent] = useState("");
   const [isReportCommentModalOpen, setIsReportCommentModalOpen] = useState(false);
+  const [isReportBlogModalOpen, setIsReportBlogModalOpen] = useState(false);
   var currentEmail = userEmail;
 
 
@@ -35,7 +36,19 @@ function BlogView() {
     setIsReportCommentModalOpen(false);
   };
 
-  const handleConfirmReport = () =>{
+  const handleConfirmCommentReport = () =>{
+    setIsReportCommentModalOpen(false);
+  }
+
+  const handleReportBlog = () => {
+    setIsReportCommentModalOpen(true);
+  };
+
+  const handleCancelBlogReport = () => {
+    setIsReportCommentModalOpen(false);
+  };
+
+  const handleConfirmBlogReport = () =>{
     setIsReportCommentModalOpen(false);
   }
 
@@ -239,21 +252,29 @@ function BlogView() {
     <div className="MainBlogView">
       <Navbar />
       {isReportCommentModalOpen && (
-        <ReportComment commentIdtoReport={reportedcommentId} userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleConfirmReport}/>
+        <ReportComment commentIdtoReport={reportedcommentId} userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleConfirmCommentReport}/>
+      )}
+      {isReportBlogModalOpen && (
+        <ReportBlog blogIdtoReport={blogId} userEmail={currentEmail} onCancel={handleCancelBlogReport} onReport={handleConfirmBlogReport}/>
       )}
       {/* Shows a single blog */}
       <div className="singleBlogContainer">
         <div>
-          {!editing && blog?.userEmail === userEmail && (
-            <div>
-              <button className="editBlog" onClick={handleEdit}>
-                Edit
-              </button>
-              <button className="editBlog" onClick={handleDelete}>
-                Delete
-              </button>
-            </div>
-          )}
+          <div className="blogButtons">
+            {!editing && blog?.userEmail === userEmail && (
+              <div>
+                <button className="editBlog" onClick={handleEdit}>
+                  Edit
+                </button>
+                <button className="editBlog" onClick={handleDelete}>
+                  Delete
+                </button>
+              </div>
+            )}
+            <button className="editBlog" onClick={handleReportBlog}>
+              Report
+            </button>
+          </div>
           {/* Shows the title of the  blog */}
           <h2 className="titleofBlog">{blog?.title}</h2>
         </div>

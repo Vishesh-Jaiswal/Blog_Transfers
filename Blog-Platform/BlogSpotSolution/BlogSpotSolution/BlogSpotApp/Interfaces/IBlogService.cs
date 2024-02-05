@@ -11,5 +11,8 @@ namespace BlogSpotApp.Interfaces
         Blog EditPost(Blog blog);
         Blog? GetBlogById(int id);
         List<Blog>? GetBlogByEmail(string email);
+        Blog? ReportBlog(Blog blog);
+        List<Blog>? ReportedBlogs();
+        Blog? ApproveReportBlog(int id);
     }
 }

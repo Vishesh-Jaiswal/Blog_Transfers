@@ -10,9 +10,14 @@ namespace BlogSpotApp.Models
         public int BlogId { get; set; }
         public string? Title { get; set; }
         public string? Content { get; set; }
+        public string? ReportedBy { get; set; } = string.Empty;
+        public DateTime? ReportedAt { get; set; }
+        public string? ReportReason { get; set; } = string.Empty;
         public string UserEmail { get; set; } = string.Empty;
         [NotMapped]
         public List<string>? Categories { get; set; }
+        [NotMapped]
+        public List<Blog>? ReportedBlogs { get; set; }
         public DateTime? CreationDate { get; set; }
         [JsonIgnore]
         public User? Author { get; set; }

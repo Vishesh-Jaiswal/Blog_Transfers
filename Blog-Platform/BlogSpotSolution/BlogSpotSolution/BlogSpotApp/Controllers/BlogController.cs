@@ -4,6 +4,7 @@ using BlogSpotApp.Exceptions;
 using BlogSpotApp.Interfaces;
 using BlogSpotApp.Models;
 using Microsoft.AspNetCore.Cors;
+using BlogSpotApp.Services;
 
 namespace BlogSpotApp.Controllers
 {
@@ -78,6 +79,59 @@ namespace BlogSpotApp.Controllers
             }
 
             return BadRequest("Could Not Edit The Blog");
+        }
+
+        [HttpPut]
+        [Route("ReportBlog")]
+        public ActionResult ReportBlog(Blog blog)
+        {
+            string errorMessage;
+            try
+            {
+                var result = _blogService.ReportBlog(blog);
+                _logger.LogInformation("Comment Reported");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
+        }
+        [HttpPut]
+        [Route("ApproveReportBlog/{BlogID}")]
+        public ActionResult ApproveReportBlog(int BlogID)
+        {
+            string errorMessage;
+            try
+            {
+                var result = _blogService.ApproveReportBlog(BlogID);
+                _logger.LogInformation("Comment Reported");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
+        }
+
+        [HttpGet]
+        [Route("ReportedBlogs")]
+        public ActionResult GetReportedBlogs()
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _blogService.ReportedBlogs();
+                _logger.LogInformation("Fetched all the reported blogs");
+                return Ok(result);
+            }
+            catch (NoBlogsAvailableException e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
         }
         //------------------------------------------GET ALL BLOGS----------------------------------
         [HttpGet]

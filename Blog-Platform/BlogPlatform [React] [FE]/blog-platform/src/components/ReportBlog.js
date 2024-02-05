@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import './EditProfile.css';
 
-function ReportComment({ commentIdtoReport,userEmail, onCancel, onReport }) {
+function ReportBlog({ blogIdtoReport,userEmail, onCancel, onReport }) {
   const [reportReason,setReportReason]=useState("");
 
-  const handleReportComment = async () => {
+  const handleReportBlog = async () => {
     try {
-      await axios.put("http://localhost:5273/api/Comment/ReportComment",
+      await axios.put("http://localhost:5273/api/Blog/ReportBlog",
         {
-          commentId:commentIdtoReport,
+          commentId:blogIdtoReport,
           reportReason:reportReason,
           reportedBy:userEmail
         })
@@ -24,7 +24,7 @@ function ReportComment({ commentIdtoReport,userEmail, onCancel, onReport }) {
     <div className="MainEdit">
       <div className="edit-profile-modal">
         <div className="edit-profile-form">
-          <h2>Report Comment</h2>
+          <h2>Report Blog</h2>
           {/* Enter Report Reason */}
           <label>
             Report Reason
@@ -33,7 +33,7 @@ function ReportComment({ commentIdtoReport,userEmail, onCancel, onReport }) {
             />
           </label>
           <div className="edit-profile-buttons">
-            <button onClick={handleReportComment}>Report</button>
+            <button onClick={handleReportBlog}>Report</button>
             <button onClick={onCancel}>Cancel</button>
           </div>
         </div>
@@ -42,4 +42,4 @@ function ReportComment({ commentIdtoReport,userEmail, onCancel, onReport }) {
   );
 }
 
-export default ReportComment;
+export default ReportBlog;

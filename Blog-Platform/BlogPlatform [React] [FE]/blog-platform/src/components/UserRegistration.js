@@ -58,12 +58,12 @@ function RegisterUser(){
             setTimeout(() => setUserRePasswordError(""), 4000);
             return false;
         }
-        if(password!=repassword){
+        if(password!==repassword){
             setPassMismatch("Passwords do not match");
             setTimeout(()=> setPassMismatch(""),4000);
             return false;
         }
-        if(role!='Blogger' && role!='Reader'){
+        if(role!=='Blogger' && role!=='Reader'){
             setNoRoleError("No Role Selected");
             setTimeout(()=> setNoRoleError(""),4000);
             return false;
