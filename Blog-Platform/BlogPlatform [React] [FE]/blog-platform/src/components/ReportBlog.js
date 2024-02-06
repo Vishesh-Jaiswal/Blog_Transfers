@@ -9,7 +9,7 @@ function ReportBlog({ blogIdtoReport,userEmail, onCancel, onReport }) {
     try {
       await axios.put("http://localhost:5273/api/Blog/ReportBlog",
         {
-          commentId:blogIdtoReport,
+          blogId:blogIdtoReport,
           reportReason:reportReason,
           reportedBy:userEmail
         })

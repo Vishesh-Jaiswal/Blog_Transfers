@@ -5,3 +5,4 @@ DROP DATABASE BlogSpotDB
 
 ----------------SELECT-----------------
 SELECT * FROM users
+SELECT * FROM blogs

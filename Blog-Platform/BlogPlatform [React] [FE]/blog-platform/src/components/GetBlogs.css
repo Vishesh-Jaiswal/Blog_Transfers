@@ -1,5 +1,5 @@
 .show-blogs {
-    background-image: url(/public/images/banner.jpg);
+    background: url(/public/images/banner.jpg),#8216ce;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

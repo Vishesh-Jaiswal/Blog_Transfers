@@ -6,6 +6,7 @@ import NewComment from "./NewComment";
 import Navbar from "./Navbar";
 import moment from "moment/moment";
 import ReportComment from "./ReportComment";
+import ReportBlog from "./ReportBlog";
 
 function BlogView() {
   const { blogId } = useParams();
@@ -40,16 +41,16 @@ function BlogView() {
     setIsReportCommentModalOpen(false);
   }
 
-  const handleReportBlog = () => {
-    setIsReportCommentModalOpen(true);
+  const handleReportBlog = (blogId) => {
+    setIsReportBlogModalOpen(true);
   };
 
   const handleCancelBlogReport = () => {
-    setIsReportCommentModalOpen(false);
+    setIsReportBlogModalOpen(false);
   };
 
   const handleConfirmBlogReport = () =>{
-    setIsReportCommentModalOpen(false);
+    setIsReportBlogModalOpen(false);
   }
 
 
@@ -259,24 +260,27 @@ function BlogView() {
       )}
       {/* Shows a single blog */}
       <div className="singleBlogContainer">
-        <div>
-          <div className="blogButtons">
+        <div className="titleAndButtons">
+          {/* Shows the title of the  blog */}
+          <h2 className="titleofBlog">{blog?.title}</h2>
+          <div className="blogFunctions">
             {!editing && blog?.userEmail === userEmail && (
               <div>
                 <button className="editBlog" onClick={handleEdit}>
                   Edit
                 </button>
+                
                 <button className="editBlog" onClick={handleDelete}>
                   Delete
                 </button>
               </div>
             )}
+            <div>
             <button className="editBlog" onClick={handleReportBlog}>
               Report
-            </button>
+            </button></div>
           </div>
-          {/* Shows the title of the  blog */}
-          <h2 className="titleofBlog">{blog?.title}</h2>
+          
         </div>
         <hr id="hrrule" />
         {/* Editable blog content */}

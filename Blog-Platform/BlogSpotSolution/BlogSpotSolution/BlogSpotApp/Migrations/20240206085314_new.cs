@@ -1,4 +1,4 @@
-﻿   using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -51,6 +51,9 @@ namespace BlogSpotApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReportedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReportedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ReportReason = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserEmail = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
