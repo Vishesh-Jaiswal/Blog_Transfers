@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import './BlogView.css';
-import NewComment from "./NewComment";
 import Navbar from "./Navbar";
 import moment from "moment/moment";
-import ReportComment from "./ReportComment";
-import ReportBlog from "./ReportBlog";
 
 function ReportedBlog() {
   const { blogId } = useParams();
-  const [blog, setBlog] = useState(null);
+  const [reportedBlog, setReportedBlog] = useState(null);
   const userEmail = localStorage.getItem('userEmail');
-  const role = localStorage.getItem('role');
   const navigate = useNavigate();
-  var currentEmail = userEmail;
 
 
   //Fetches the blog
@@ -22,7 +17,7 @@ function ReportedBlog() {
   const fetchBlog = async () => {
     try {
       const blogResponse = await axios.get(`http://localhost:5273/api/Blog/${blogId}`);
-      setBlog(blogResponse.data);
+      setReportedBlog(blogResponse.data);
 
     } catch (error) {
         if (error.response) {
@@ -37,6 +32,10 @@ function ReportedBlog() {
 
   fetchBlog();
   }, [blogId, userEmail]);
+  const handleApprove = async () =>{
+    const response = await axios.put(`http://localhost:5273/api/Blog/ApproveReportBlog/${blogId}`)
+    .then(console.log(response)).catch(console.log(response))
+  }
 
   const handleDelete = async () => {
     // Display a confirmation dialog
@@ -52,8 +51,8 @@ function ReportedBlog() {
           },
           data: {
             blogId: blogId,
-            title: blog.title,
-            content: blog.content,
+            title: reportedBlog.title,
+            content: reportedBlog.content,
             userEmail: userEmail,
           },
         });
@@ -65,30 +64,43 @@ function ReportedBlog() {
       }
     }
   };
+
+
   return (
     <div className="MainBlogView">
       <Navbar />
       {/* Shows a single blog */}
       <div className="ReportedView">
-        <div className="singleBlogContainer">
-          <h2 className="titleofBlog">{blog?.title}</h2>
+        <div className="singleBlogContainer reportedblog">
+          <h2 className="titleofBlog">{reportedBlog?.title}</h2>
           <hr id="hrrule" />
             <div className="contentofBlog">
               {/* Content of the blog*/}
-              <p>{blog?.content}</p>
+              <p>{reportedBlog?.content}</p>
             </div>
           {/* Blogger Profile Link*/}
-          <Link to={`/profile/${blog?.userEmail}`} className="profileLink">
-            <p className="author">------<i>{blog?.userEmail}</i>------</p>
+          <Link to={`/profile/${reportedBlog?.userEmail}`} className="profileLink">
+            <p className="author">------<i>{reportedBlog?.userEmail}</i>------</p>
           </Link>
         </div>
-        <div className="singleBlogContainer">
+        <div className="singleBlogContainer review">
         <div className="contentofBlog">
           <h2 className="titleofBlog">Report Review</h2>
+          <div className="blogFunctions">
+
+                <button className="editBlog" onClick={handleApprove}>
+                  Approve
+                </button>
+                
+                <button className="editBlog" onClick={handleDelete}>
+                  Delete
+                </button>
+              </div>
           
           <hr id="hrrule" />
-          <p id="reportReview">Reported At:</p> {moment(blog.reportedAt).format("DD/MM/YY HH:mm")}<br/>
-          <p id="reportReview">Report Reason:</p>  <p>{blog?.reportReason}</p>
+          <p id="reportReview"><b>Reported At:</b>{moment(reportedBlog?.reportedAt).format("DD/MM/YY HH:mm")}</p> 
+          <p id="reportReview"><b>Report By:</b> {reportedBlog?.reportedBy}</p>
+          <p id="reportReview"><b>Report Reason:</b></p>  <p>{reportedBlog?.reportReason}</p>
         </div>
         </div>
       </div>

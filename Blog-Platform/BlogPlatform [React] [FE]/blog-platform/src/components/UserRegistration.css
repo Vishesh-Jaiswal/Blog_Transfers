@@ -4,6 +4,7 @@
   width: 100%;
   place-items: center;
 }
+
 .wrapper{
   width: 40%;
   background: #fff;
@@ -28,6 +29,7 @@
 }
 .wrapper .registerForm{
   padding: 10px 30px 50px 30px;
+  max-height: fit-content;
 }
 .wrapper .registerForm .field{
   height: 50px;
@@ -139,12 +141,16 @@ form .field input:valid{
 .registerForm .signin-link a:hover{
   text-decoration: underline;
 }
-.Main .regwrap{
-  height: 87% !important;
-}
+
+
 @media(max-width:800px){
   .Main .regwrap{
-    height: 87% !important;
+    height: 87%;
+    max-height: 87% !important;
+  }
+  .registerForm{
+    height: 87%;
+    max-height: 87% !important;
   }
   .Main{
     display: flex !important;

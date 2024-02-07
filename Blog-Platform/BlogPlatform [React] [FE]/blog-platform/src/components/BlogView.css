@@ -166,6 +166,16 @@
 .buttonsnew{
   text-align: center;
 }
-.reportReview{
-  font-weight: 200;
+.ReportedView{
+  display: flex;
+  justify-content: space-between;
+}
+.review{
+  margin-left: 70px;
+  margin-right: 15px;
+  height: 80vh;
+}
+.reportedblog{
+  height: 80vh;
+  margin-left: 14px;
 }

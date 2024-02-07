@@ -115,7 +115,7 @@ function RegisterUser(){
             <div className="title regtitle">
             Register Now
             </div>
-            <form className="registerForm">
+            <div className="registerForm">
             <div className="field">
                 <input type="text" required value={userEmail}
                     onChange={(e) => { setUserEmail(e.target.value) }} />
@@ -158,7 +158,7 @@ function RegisterUser(){
             <div className="signin-link">
                         Already a member? <Link to="/">SignIn now</Link>
                     </div>
-            </form>
+            </div>
         </div>
      </div>
     );
