@@ -27,7 +27,8 @@
     height: 78vh;
 }
 .categoryContainer1{
-    width: 20%;
+    width: 28%;
+    
 }
 .NewBlogArea{
     width: 100%;
@@ -54,6 +55,7 @@
 }
 
 .categoryContainer {
+    height: 90%;
     padding-left: 6px;
     padding-right: 11px;
     width: 100%;
@@ -91,8 +93,8 @@
 }
 .contentHolder .form-control{
     width: 99%;
-    max-height: 380px;
-    height: 350px;
+    max-height: 260px;
+    height: 220px;
 }
 
 .blogButtons{
@@ -114,13 +116,14 @@
     padding: 5px 10px;
     border-radius: 5px;
 }
-@media (max-height: 600px) {
-    .categoryContainer {
-        width: 150px;
-        max-height: 87%;
+@media (max-height:550px){
+    .contentHolder .form-control{
+        width: 99%;
+        max-height: 90px;
+        height: 220px;
     }
-    .contentHolder{
-        max-height: 50%;
+    .blogFormCreate{
+        max-height: 320px;
     }
 }
 @media (max-width: 800px) {

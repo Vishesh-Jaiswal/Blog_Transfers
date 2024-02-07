@@ -25,6 +25,16 @@ function Navbar() {
                   Post Blogs
                 </Link>
             </li>)}
+            {role === 'Admin' && (<li className="nav-item">
+                <Link className="nav-link" to="/reportedblogs">
+                  Reported Blogs
+                </Link>
+            </li>)}
+            {role === 'Admin' && (<li className="nav-item">
+                <Link className="nav-link" to="/reportedcomments">
+                  Reported Comments
+                </Link>
+            </li>)}
             <li className="nav-item">
               <Link className="nav-link" to="/showblogs">
                 Show Blogs

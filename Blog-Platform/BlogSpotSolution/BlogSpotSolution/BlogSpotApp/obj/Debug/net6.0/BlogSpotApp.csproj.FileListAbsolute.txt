@@ -1545,3 +1545,4 @@ D:\Project\Blog_Transfers\Blog-Platform\BlogSpotSolution\BlogSpotSolution\BlogSp
 D:\Project\Blog_Transfers\Blog-Platform\BlogSpotSolution\BlogSpotSolution\BlogSpotApp\obj\Debug\net6.0\BlogSpotApp.csproj.CopyComplete
 D:\Project\Blog_Transfers\Blog-Platform\BlogSpotSolution\BlogSpotSolution\BlogSpotApp\obj\Debug\net6.0\BlogSpotApp.genruntimeconfig.cache
 D:\Project\Blog_Transfers\Blog-Platform\BlogSpotSolution\BlogSpotSolution\BlogSpotApp\obj\Debug\net6.0\ref\BlogSpotApp.dll
+C:\Users\2000112368\Project\Blog_Transfers\Blog-Platform\BlogSpotSolution\BlogSpotSolution\BlogSpotApp\obj\Debug\net6.0\BlogSpotApp.sourcelink.json

@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .singleBlogContainer {
   left: 20px;
   height: 70%;
@@ -164,4 +165,7 @@
 }
 .buttonsnew{
   text-align: center;
+}
+.reportReview{
+  font-weight: 200;
 }
