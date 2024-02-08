@@ -9,6 +9,8 @@ function ReportedBlog() {
   const { blogId } = useParams();
   const [reportedBlog, setReportedBlog] = useState(null);
   const userEmail = localStorage.getItem('userEmail');
+  const [isApproveBoxOpen,setApproveBox] = useState(false);
+  const [apiDelay,setApiDelay] = useState(false);
   const navigate = useNavigate();
 
 
@@ -20,8 +22,8 @@ function ReportedBlog() {
       setReportedBlog(blogResponse.data);
 
     } catch (error) {
-        if (error.response) {
-          console.error(`Error for API call: ${error.config.url}`, error.response.data);
+        if (error.blogResponse) {
+          console.error(`Error for API call: ${error.config.url}`, error.blogResponse.data);
         } else if (error.request) {
           console.error(`No response received for API call: ${error.config.url}`);
         } else {
@@ -29,13 +31,23 @@ function ReportedBlog() {
         }
       }
     };
-
   fetchBlog();
   }, [blogId, userEmail]);
+
   const handleApprove = async () =>{
+    setApiDelay(true);
     const response = await axios.put(`http://localhost:5273/api/Blog/ApproveReportBlog/${blogId}`)
-    .then(console.log(response)).catch(console.log(response))
-  }
+    .then(response => {
+      console.log(response.data);
+      setApproveBox(true);
+      setTimeout(()=>setApproveBox(false),2000);
+      setTimeout(()=>{setApiDelay(false);navigate('/reportedblogs');},2000);
+      
+    })
+    .catch(error => {
+      console.error("Error deleting content:", error);
+    });
+  };
 
   const handleDelete = async () => {
     // Display a confirmation dialog
@@ -58,21 +70,38 @@ function ReportedBlog() {
         });
   
         console.log(response.data);
-        navigate('/homepage');
+        navigate('/reportedblogs');
       } catch (error) {
         console.error("Error deleting content:", error);
       }
     }
   };
 
-
   return (
     <div className="MainBlogView">
       <Navbar />
       {/* Shows a single blog */}
+      {isApproveBoxOpen && (
+        <>
+        <div className="veil"></div>
+        <div className="approveBox">
+          Blog Approved
+        </div>
+        </>
+      )}
       <div className="ReportedView">
         <div className="singleBlogContainer reportedblog">
-          <h2 className="titleofBlog">{reportedBlog?.title}</h2>
+          <div className="titleAndReportButtons">
+            <h2 className="titleofBlog">{reportedBlog?.title}</h2>
+            <div className="blogFunctions">
+              <button className="editBlog" onClick={handleApprove}>
+                Approve
+              </button>
+              <button className="editBlog" onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
+          </div>
           <hr id="hrrule" />
             <div className="contentofBlog">
               {/* Content of the blog*/}
@@ -86,17 +115,6 @@ function ReportedBlog() {
         <div className="singleBlogContainer review">
         <div className="contentofBlog">
           <h2 className="titleofBlog">Report Review</h2>
-          <div className="blogFunctions">
-
-                <button className="editBlog" onClick={handleApprove}>
-                  Approve
-                </button>
-                
-                <button className="editBlog" onClick={handleDelete}>
-                  Delete
-                </button>
-              </div>
-          
           <hr id="hrrule" />
           <p id="reportReview"><b>Reported At:</b>{moment(reportedBlog?.reportedAt).format("DD/MM/YY HH:mm")}</p> 
           <p id="reportReview"><b>Report By:</b> {reportedBlog?.reportedBy}</p>
