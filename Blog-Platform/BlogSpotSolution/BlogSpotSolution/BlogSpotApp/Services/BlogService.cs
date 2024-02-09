@@ -175,28 +175,25 @@ namespace BlogSpotApp.Services
         public Blog DeletePost(Blog blog)
         {
             var blogCheck = _blogRepository.GetAll()?.FirstOrDefault(b => b.BlogId == blog.BlogId);
-
             if (blogCheck == null)
             {
                 throw new BlogNotFoundException();
             }
-            if (blogCheck.UserEmail != blog.UserEmail)
-            {
-
-                throw new UnauthorizedAccessException("You are not authorized to delete this blog post.");
-            }
             blogCheck.ReportedBlogs?.Remove(blog);
-            if(DeleteBlogLikeCascade(blog.BlogId)==true && DeleteCommentCascade(blog.BlogId)==true && DeleteBlogCategoryCascade(blog)==true){
-                var result = _blogRepository.Delete(blogCheck.BlogId);
-                if (result == null)
+            if ((blogCheck.UserEmail == blog.UserEmail) || (blog.UserEmail == "admin@blazeblogs.com"))
+            {
+                if (DeleteBlogLikeCascade(blog.BlogId) == true && DeleteCommentCascade(blog.BlogId) == true && DeleteBlogCategoryCascade(blog) == true)
                 {
-                    throw new CouldNotDelete();
+                    var result = _blogRepository.Delete(blogCheck.BlogId);
+                    if (result == null)
+                    {
+                        throw new CouldNotDelete();
+                    }
+                    return blog;
                 }
-                return blog;
-            }
+            }else
+                throw new UnauthorizedAccessException("You are not authorized to delete this blog post.");
             throw new CouldNotDelete();
-
-
         }
 
         private bool DeleteBlogCategoryCascade(Blog blog)

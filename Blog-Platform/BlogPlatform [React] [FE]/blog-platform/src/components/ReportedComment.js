@@ -5,7 +5,7 @@ import './BlogView.css';
 import Navbar from "./Navbar";
 import moment from "moment/moment";
 
-function ReportedBlog() {
+function ReportedComment() {
   const { blogId } = useParams();
   const [reportedBlog, setReportedBlog] = useState(null);
   const userEmail = localStorage.getItem('userEmail');
@@ -138,4 +138,4 @@ function ReportedBlog() {
   );
 }
 
-export default ReportedBlog;
+export default ReportedComment;

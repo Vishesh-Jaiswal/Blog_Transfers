@@ -51,7 +51,7 @@ namespace BlogSpotApp.Controllers
         /// </summary>
         /// <param name="blog"></param>
         /// <returns></returns>
-        [Authorize(Roles = "Blogger")]
+        [Authorize(Roles = "Blogger,Admin")]
         [HttpDelete]
         [Route("Delete")]
         public ActionResult DeleteBlog(Blog blog)
