@@ -1,12 +1,6 @@
-﻿using BlogSpotApp.Models.DTOs;
-using BlogSpotApp.Models;
-using System.Security.Cryptography;
-using System.Text;
+﻿using BlogSpotApp.Models;
 using BlogSpotApp.Contexts;
 using BlogSpotApp.Interfaces;
-using System.Reflection.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore;
 
 namespace BlogSpotApp.Repositories
 {
@@ -37,7 +31,6 @@ namespace BlogSpotApp.Repositories
             }
             return null;
         }
-
 
         public IList<Blog>? GetAll()
         {
