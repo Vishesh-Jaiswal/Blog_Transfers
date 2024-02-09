@@ -6,11 +6,12 @@ namespace OnlineBookStore.Models
     {
         [Key]
         public int BookId { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string ISBN { get; set; }
-        public DateTime PublichDate { get; set; }
-        public User BooksTakenBy { get; set; }
-        public string UserEmail { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Author { get; set; } = string.Empty;
+        public string Genre { get; set; } = string.Empty;
+        public string ISBN { get; set; } = string.Empty;
+        public DateTime? PublichDate { get; set; }
+        public User? BooksTakenBy { get; set; }
+        public string? UserEmail { get; set; }
     }
 }

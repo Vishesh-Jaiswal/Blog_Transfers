@@ -2664,11 +2664,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\2000112368\\Project\\OnlineBookStore\\OnlineBookStore\\OnlineBookStore.csproj",
+      "projectUniqueName": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\OnlineBookStore\\OnlineBookStore\\OnlineBookStore.csproj",
       "projectName": "OnlineBookStore",
-      "projectPath": "C:\\Users\\2000112368\\Project\\OnlineBookStore\\OnlineBookStore\\OnlineBookStore.csproj",
+      "projectPath": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\OnlineBookStore\\OnlineBookStore\\OnlineBookStore.csproj",
       "packagesPath": "C:\\Users\\2000112368\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\2000112368\\Project\\OnlineBookStore\\OnlineBookStore\\obj\\",
+      "outputPath": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\OnlineBookStore\\OnlineBookStore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -33,7 +33,10 @@ namespace OnlineBookStore.Repositories
 
         public User? GetById(string key)
         {
-            throw new NotImplementedException();
+            var result=_onlineBookAppContext.Users.SingleOrDefault(u=>u.UserEmail == key);
+            if(result == null)
+                return null;
+            return result;
         }
 
         public User? Update(User entity)
