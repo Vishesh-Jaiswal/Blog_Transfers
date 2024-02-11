@@ -25,9 +25,21 @@ function BlogView() {
   const [editedCommentContent, setEditedCommentContent] = useState("");
   const [isReportCommentModalOpen, setIsReportCommentModalOpen] = useState(false);
   const [isReportBlogModalOpen, setIsReportBlogModalOpen] = useState(false);
+  const [isCommentReportedBoxOpen,setCommentReportedBoxOpen] = useState(false);
+  const [isBlogReportedBoxOpen,setBlogReportedBoxOpen] = useState(false);
   var currentEmail = userEmail;
 
-
+  const updatedCommentsResponse = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5273/api/Comment/${blogId}`);
+      setComments(response.data);
+      updatedCommentsResponse();
+    } catch (error) {
+      console.error("Error updating comments:", error);
+    }
+  };
+  
+  
   const handleReportComment = (commentId) => {
     setIsReportCommentModalOpen(true);
     setReportedcommentId(commentId);
@@ -39,6 +51,8 @@ function BlogView() {
 
   const handleConfirmCommentReport = () =>{
     setIsReportCommentModalOpen(false);
+    setCommentReportedBoxOpen(true);
+    setTimeout(()=>setCommentReportedBoxOpen(false),2000);
   }
 
   const handleReportBlog = (blogId) => {
@@ -48,9 +62,11 @@ function BlogView() {
   const handleCancelBlogReport = () => {
     setIsReportBlogModalOpen(false);
   };
-
+  
   const handleConfirmBlogReport = () =>{
     setIsReportBlogModalOpen(false);
+    setBlogReportedBoxOpen(true);
+    setTimeout(()=>setBlogReportedBoxOpen(false),2000);
   }
 
 
@@ -111,7 +127,7 @@ function BlogView() {
 
   const handleCommentAdded = () => {
     axios.get(`http://localhost:5273/api/Comment/${blogId}`)
-      .then(response => setComments(response.data))
+      .then(response => updatedCommentsResponse())
       .catch(error => console.error("Error fetching comments:", error));
     setShowNewComment(false);
   };
@@ -208,8 +224,7 @@ function BlogView() {
         blogId
       });
   
-      const updatedCommentsResponse = await axios.get(`http://localhost:5273/api/Comment/${blogId}`);
-      setComments(updatedCommentsResponse.data);
+      updatedCommentsResponse();
   
       setEditingCommentId(null);
     } catch (error) {
@@ -238,20 +253,37 @@ function BlogView() {
             userEmail,
           },
         });
-  
-        const updatedCommentsResponse = await axios.get(`http://localhost:5273/api/Comment/${blogId}`);
-        setComments(updatedCommentsResponse.data);
+        updatedCommentsResponse();
+        
       } catch (error) {
         console.error("Error deleting comment:", error);
       }
     }
   };
+
+  
   
 
 
   return (
     <div className="MainBlogView">
       <Navbar />
+      {isCommentReportedBoxOpen && (
+        <>
+          <div className="veil"></div>
+          <div className="approveBox">
+            Comment Reported
+          </div>
+        </>
+      )}
+      {isBlogReportedBoxOpen && (
+        <>
+          <div className="veil"></div>
+          <div className="approveBox">
+            Comment Reported
+          </div>
+        </>
+      )}
       {isReportCommentModalOpen && (
         <ReportComment commentIdtoReport={reportedcommentId} userEmail={currentEmail} onCancel={handleCancelReportCommnet} onReport={handleConfirmCommentReport}/>
       )}
@@ -264,7 +296,7 @@ function BlogView() {
           {/* Shows the title of the  blog */}
           <h2 className="titleofBlog">{blog?.title}</h2>
           <div className="blogFunctions">
-            {!editing && blog?.userEmail === userEmail && (
+            {!editing && blog?.userEmail === userEmail ? (
               <div>
                 <button className="editBlog" onClick={handleEdit}>
                   Edit
@@ -274,12 +306,13 @@ function BlogView() {
                   Delete
                 </button>
               </div>
+            ) : (<div>
+              <button className="editBlog" onClick={handleReportBlog}>
+                Report
+              </button></div>
             )}
-            <div>
-            <button className="editBlog" onClick={handleReportBlog}>
-              Report
-            </button></div>
-          </div>
+            </div>
+            
           
         </div>
         <hr id="hrrule" />
@@ -353,19 +386,21 @@ function BlogView() {
                       <div className="buttonandTitle">
                         <Link to={`/profile/${comment.userEmail}`}>{comment.userEmail}</Link><br />
                         <div className="buttonsforComment">
-                        {comment.userEmail === userEmail && (
-                          <div>
-                            <button id="forCommentEdit" onClick={() => handleEditComment(comment.commentId)}>
-                              Edit
+                          {comment.userEmail === userEmail ? (
+                            <div>
+                              <button id="forCommentEdit" onClick={() => handleEditComment(comment.commentId)}>
+                                Edit
+                              </button>
+                              <button id="forCommentEdit" onClick={() => handleDeleteComment(comment.commentId)}>
+                                Delete
+                              </button>
+                            </div>
+                          ) : (
+                            <button id="forCommentEdit" onClick={() => handleReportComment(comment.commentId)}>
+                              Report
                             </button>
-                            <button id="forCommentEdit" onClick={() => handleDeleteComment(comment.commentId)}>
-                              Delete
-                            </button>
-                        </div>
-                        )}
-                        <button id="forCommentEdit" onClick={() => handleReportComment(comment.commentId)}>
-                          Report
-                        </button></div>
+                          )}
+                      </div>
                       </div>
                       <div className="actualComment"><p>{comment.content}</p></div> <br />
                       {moment(comment.commentedAt).format("DD/MM/YY HH:mm")}

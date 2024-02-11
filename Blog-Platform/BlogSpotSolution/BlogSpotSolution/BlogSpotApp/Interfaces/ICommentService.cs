@@ -12,5 +12,6 @@ namespace BlogSpotApp.Interfaces
         Comment? ReportComment(Comment comment);
         List<Comment>? ReportedComments();
         Comment? ApproveReportComment(int id);
+        Comment? GetCommentById(int id);
     }
 }

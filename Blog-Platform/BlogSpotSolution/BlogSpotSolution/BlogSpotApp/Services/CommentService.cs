@@ -74,6 +74,16 @@ namespace BlogSpotApp.Services
             commentToReport.ReportedComments?.Add(comment);
             return comment;
         }
+        public Comment? GetCommentById(int id)
+        {
+            var comment = _commentRepository.GetById(id);
+            if (comment == null)
+            {
+                return null;
+            }
+
+            return comment;
+        }
 
         public List<Comment>? ReportedComments()
         {
@@ -126,21 +136,24 @@ namespace BlogSpotApp.Services
         public Comment? DeleteComment(Comment comment)
         {
             var checkCommenter = _commentRepository.GetAll()?.SingleOrDefault(c => c.CommentId == comment.CommentId);
-            if (checkCommenter == null || (checkCommenter.UserEmail != comment.UserEmail))
+            if (checkCommenter == null)
             {
-                throw new UnauthorizedAccessException("You are not authorized to delete this comment.");
+                return null;   
             }
             checkCommenter.ReportedComments?.Remove(comment);
-            comment.CommentedAt = checkCommenter.CommentedAt;
-            if (DeleteCommentLikeCascade(comment.CommentId))
+            if ((checkCommenter.UserEmail == comment.UserEmail) || (comment.UserEmail == "admin@blazeblogs.com"))
             {
-                var result = _commentRepository.Delete(comment.CommentId);
-                if (result == null)
+                if (DeleteCommentLikeCascade(comment.CommentId))
                 {
-                    return null;
+                    var result = _commentRepository.Delete(comment.CommentId);
+                    if (result == null)
+                    {
+                        return null;
+                    }
+                    return comment;
                 }
-                return comment;
             }
+            else throw new UnauthorizedAccessException("You are not authorized to delete this comment.");
             return null;
         }
 

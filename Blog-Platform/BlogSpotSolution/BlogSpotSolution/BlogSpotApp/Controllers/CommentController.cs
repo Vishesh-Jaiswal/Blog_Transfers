@@ -144,7 +144,7 @@ namespace BlogSpotApp.Controllers
             }
             return BadRequest(errorMessage);
         }
-
+        [Authorize(Roles = "Reader,Admin")]
         [HttpDelete]
         [Route("Delete")]
         public ActionResult DeleteComment(Comment comment)
@@ -157,6 +157,28 @@ namespace BlogSpotApp.Controllers
             }
 
             return BadRequest("Blog could not be delete");
+        }
+
+        [HttpGet]
+        [Route("GetCommentByCommentID/{id}")]
+        public ActionResult GetCommentById(int id)
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _commentService.GetCommentById(id);
+                if (result != null)
+                {
+                    _logger.LogInformation($"Comment with CommentID {id} was fetched");
+                    return Ok(result);
+                }
+                return NotFound();
+            }
+            catch (NoBlogsAvailableException e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
         }
     }
 }

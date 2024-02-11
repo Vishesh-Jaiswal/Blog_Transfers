@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogSpotApp.Migrations
 {
     [DbContext(typeof(BlogSpotContext))]
-    [Migration("20240206085314_new")]
-    partial class @new
+    [Migration("20240211064647_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

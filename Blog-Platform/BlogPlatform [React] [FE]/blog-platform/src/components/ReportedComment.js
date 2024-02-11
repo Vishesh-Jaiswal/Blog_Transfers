@@ -6,8 +6,8 @@ import Navbar from "./Navbar";
 import moment from "moment/moment";
 
 function ReportedComment() {
-  const { blogId } = useParams();
-  const [reportedBlog, setReportedBlog] = useState(null);
+  const { commentId } = useParams();
+  const [reportedComment, setReportedComment] = useState(null);
   const userEmail = localStorage.getItem('userEmail');
   const [isApproveBoxOpen,setApproveBox] = useState(false);
   const [isDeleteBoxOpen,setDeleteBox] = useState(false);
@@ -19,12 +19,12 @@ function ReportedComment() {
   useEffect(() => {
   const fetchBlog = async () => {
     try {
-      const blogResponse = await axios.get(`http://localhost:5273/api/Blog/${blogId}`);
-      setReportedBlog(blogResponse.data);
+      const commentResponse = await axios.get(`http://localhost:5273/api/Comment/GetCommentByCommentID/${commentId}`);
+      setReportedComment(commentResponse.data);
 
     } catch (error) {
-        if (error.blogResponse) {
-          console.error(`Error for API call: ${error.config.url}`, error.blogResponse.data);
+        if (error.commentResponse) {
+          console.error(`Error for API call: ${error.config.url}`, error.commentResponse.data);
         } else if (error.request) {
           console.error(`No response received for API call: ${error.config.url}`);
         } else {
@@ -33,16 +33,16 @@ function ReportedComment() {
       }
     };
   fetchBlog();
-  }, [blogId, userEmail]);
+  }, [commentId, userEmail]);
 
   const handleApprove = async () =>{
     setApiDelay(true);
-    const response = await axios.put(`http://localhost:5273/api/Blog/ApproveReportBlog/${blogId}`)
+    const response = await axios.put(`http://localhost:5273/api/Comment/ApproveReportComment/${commentId}`)
     .then(response => {
       console.log(response.data);
       setApproveBox(true);
       setTimeout(()=>setApproveBox(false),2000);
-      setTimeout(()=>{setApiDelay(false);navigate('/reportedblogs');},2000);
+      setTimeout(()=>{setApiDelay(false);navigate('/reportedcomments');},2000);
       
     })
     .catch(error => {
@@ -53,21 +53,19 @@ function ReportedComment() {
   const handleDelete = async () => {
     setApiDelay(true);
     // Display a confirmation dialog
-    const confirmDelete = window.confirm("Are you sure you want to delete this blog?");
+    const confirmDelete = window.confirm("Are you sure you want to delete this Comment?");
   
     if (confirmDelete) {
       try {
-        const response = await axios.delete("http://localhost:5273/api/Blog/Delete", {
+        const response = await axios.delete("http://localhost:5273/api/Comment/Delete", {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem("token"),
           },
           data: {
-            blogId: blogId,
-            title: reportedBlog.title,
-            content: reportedBlog.content,
-            userEmail: userEmail,
+            commentId: commentId,
+            userEmail: userEmail
           },
         }).then(response => {
           console.log(response.data);
@@ -89,7 +87,7 @@ function ReportedComment() {
         <>
         <div className="veil"></div>
         <div className="approveBox">
-          Blog Approved
+          Comment Approved
         </div>
         </>
       )}
@@ -97,14 +95,14 @@ function ReportedComment() {
         <>
         <div className="veil"></div>
         <div className="approveBox">
-          Blog Deleted
+          Comment Deleted
         </div>
         </>
       )}
       <div className="ReportedView">
         <div className="singleBlogContainer reportedblog">
           <div className="titleAndReportButtons">
-            <h2 className="titleofBlog">{reportedBlog?.title}</h2>
+            <h2 className="titleofBlog">Reported Comment</h2>
             <div className="blogFunctions">
               <button className="editBlog" onClick={handleApprove}>
                 Approve
@@ -117,20 +115,20 @@ function ReportedComment() {
           <hr id="hrrule" />
             <div className="contentofBlog">
               {/* Content of the blog*/}
-              <p>{reportedBlog?.content}</p>
+              <p>{reportedComment?.content}</p>
             </div>
           {/* Blogger Profile Link*/}
-          <Link to={`/profile/${reportedBlog?.userEmail}`} className="profileLink">
-            <p className="author">------<i>{reportedBlog?.userEmail}</i>------</p>
+          <Link to={`/profile/${reportedComment?.userEmail}`} className="profileLink">
+            <p className="author">------<i>{reportedComment?.userEmail}</i>------</p>
           </Link>
         </div>
         <div className="singleBlogContainer review">
         <div className="contentofBlog">
           <h2 className="titleofBlog">Report Review</h2>
           <hr id="hrrule" />
-          <p id="reportReview"><b>Reported At:</b>{moment(reportedBlog?.reportedAt).format("DD/MM/YY HH:mm")}</p> 
-          <p id="reportReview"><b>Report By:</b> {reportedBlog?.reportedBy}</p>
-          <p id="reportReview"><b>Report Reason:</b></p>  <p>{reportedBlog?.reportReason}</p>
+          <p id="reportReview"><b>Reported At:</b>{moment(reportedComment?.reportedAt).format("DD/MM/YY HH:mm")}</p> 
+          <p id="reportReview"><b>Report By:</b> {reportedComment?.reportedBy}</p>
+          <p id="reportReview"><b>Report Reason:</b></p>  <p>{reportedComment?.reportReason}</p>
         </div>
         </div>
       </div>

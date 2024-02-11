@@ -35,11 +35,12 @@ function Navbar() {
                   Reported Comments
                 </Link>
             </li>)}
+            {role !== 'Admin' && (
             <li className="nav-item">
               <Link className="nav-link" to="/showblogs">
                 Show Blogs
               </Link>
-            </li>
+            </li>)}
             <li className="nav-item">
                 <Link className="nav-link" to={`/profile/${userEmail}`}>
                   {userName}

@@ -6,12 +6,33 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginUser() {
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [UserEmailError,setUserEmailError]=useState("");
+    const [userEmailError,setUserEmailError]=useState("");
+    const [validEmail,setValidEmail]=useState(false);
+    const emailFormat=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const navigate = useNavigate();
 
+    var checkUserData = ()=>{
+        if(userEmail==='')
+        {
+            setUserEmailError("User Email cannot be empty");
+            setTimeout(() => setUserEmailError(""), 4000);
+            return false;
+        }
+        if(!emailFormat.test(userEmail)){
+            setValidEmail("Invalid Email a big line that says something");
+            setTimeout(() => setValidEmail(""), 4000);
+            return false;
+        }
+    }
 
     const userLogin = (event)=>{
         event.preventDefault();
+        var checkData = checkUserData();
+        if(checkData===false)
+        {
+            alert('please check your data')
+            return;
+        }
  
         axios.post("http://localhost:5273/api/Blogger/Login", {
             userEmail: userEmail,
@@ -41,11 +62,13 @@ function LoginUser() {
                     Login Form
                 </div>
                 <form className="loginForm row g-3">
-                    <div className="field col-md-4">
-                        <input className="form-control" type="email" id="validationDefault02" required value={userEmail}
-                            onChange={(e) => { setUserEmail(e.target.value) }}  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"/>
-                        <label for="validationDefaultUsername" className="form-label">Email Address</label>
-                    </div>
+                <div className="field">
+                    <input type="text" required value={userEmail}
+                        onChange={(e) => { setUserEmail(e.target.value) }} />
+                        {userEmailError && <label className="alert alert-danger">{userEmailError}</label>}
+                        {!userEmailError && validEmail && <label className="alert alert-danger">{validEmail}</label>}
+                        {!userEmailError && !validEmail && (<label>Email Address</label>)}
+                </div>
                     <div className="field">
                         <input type="password" required value={password}
                             onChange={(e) => { setPassword(e.target.value) }} />

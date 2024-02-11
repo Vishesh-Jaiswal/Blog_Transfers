@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlogShopAppTest
-build_property.ProjectDir = C:\Users\2000112368\Project\Blog_Transfers\Blog-Platform\BlogSpotSolution\BlogSpotSolution\BlogShopAppTest\
+build_property.ProjectDir = D:\Project\Blog_Transfers\Blog-Platform\BlogSpotSolution\BlogSpotSolution\BlogShopAppTest\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

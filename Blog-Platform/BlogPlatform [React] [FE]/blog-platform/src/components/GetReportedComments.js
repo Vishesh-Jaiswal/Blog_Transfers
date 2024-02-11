@@ -30,10 +30,12 @@ function GetReportedComments() {
           {Array.isArray(reportedComments) && reportedComments.length > 0 ? (
             <ul>
               {reportedComments.map((blog) => (
+                <Link to={`/showreportedcomment/${blog.commentId}`} className="blog-link">
                 <li key={blog.commentId} className="blog-item">
- 
+                  <b><i>{blog.userEmail}</i></b>
                   <p className="blog-content">{blog.content}</p>
                 </li>
+                </Link>
               ))}
             </ul>
           ) : (
