@@ -12,8 +12,8 @@ using OnlineBookStore.Contexts;
 namespace OnlineBookStore.Migrations
 {
     [DbContext(typeof(OnlineBookAppContext))]
-    [Migration("20240209084556_initial")]
-    partial class initial
+    [Migration("20240212041201_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,11 +36,15 @@ namespace OnlineBookStore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ISBN")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PublichDate")
+                    b.Property<DateTime?>("PublichDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -48,7 +52,6 @@ namespace OnlineBookStore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserEmail")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("BookId");
@@ -87,8 +90,7 @@ namespace OnlineBookStore.Migrations
                     b.HasOne("OnlineBookStore.Models.User", "BooksTakenBy")
                         .WithMany("BooksTaken")
                         .HasForeignKey("UserEmail")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("BooksTakenBy");
                 });

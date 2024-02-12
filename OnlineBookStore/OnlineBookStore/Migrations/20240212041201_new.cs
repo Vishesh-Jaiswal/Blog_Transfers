@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineBookStore.Migrations
 {
-    public partial class initial : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,9 +32,10 @@ namespace OnlineBookStore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ISBN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublichDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserEmail = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    PublichDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserEmail = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {

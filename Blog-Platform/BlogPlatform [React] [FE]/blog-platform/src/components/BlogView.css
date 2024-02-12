@@ -208,3 +208,23 @@
   height:100%;
 z-index:998;
 }
+@media(max-width:768px){
+  .approveBox{
+    font-size: large;
+    width: fit-content;
+  }
+  .ReportedView{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+  }
+  .review{
+    margin: 30px auto;
+    height: 80vh;
+    
+  }
+  .colorfill{
+    background-color: #8216cd;
+  }
+}

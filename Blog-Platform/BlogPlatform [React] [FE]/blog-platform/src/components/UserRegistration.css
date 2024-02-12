@@ -25,10 +25,10 @@
   color: #fff;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background:#ae20a4;
 }
 .wrapper .registerForm{
-  padding: 10px 30px 50px 30px;
+  padding: 10px 30px 30px 30px;
   max-height: fit-content;
 }
 .wrapper .registerForm .field{
@@ -121,7 +121,7 @@ form .field input:valid{
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background:#ae20a4;
   transition: all 0.3s ease;
 }
 .registerForm .field input[type="button"]:active{
@@ -133,27 +133,22 @@ form .field input:valid{
   text-align: center;
 }
 .registerForm .pass-link a,
-.registerForm .signin-link a{
+.registerForm .signin-link Link{
   color: #4158d0;
   text-decoration: none;
 }
-.registerForm .pass-link a:hover,
-.registerForm .signin-link a:hover{
+.registerForm .pass-link Link:hover,
+.registerForm .signin-link Link:hover{
   text-decoration: underline;
 }
 
 
 @media(max-width:800px){
-  .Main .regwrap{
-    height: 87%;
-    max-height: 87% !important;
-  }
-  .registerForm{
-    height: 87%;
-    max-height: 87% !important;
-  }
-  .Main{
+  .UserReg{
     display: flex !important;
     justify-content: center;
+  }
+  .regwrap{
+    width: 60% !important;
   }
 }

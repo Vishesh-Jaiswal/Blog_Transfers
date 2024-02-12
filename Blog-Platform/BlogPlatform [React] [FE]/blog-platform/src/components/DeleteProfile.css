@@ -28,7 +28,7 @@
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background:#ae20a4;
     transition: all 0.3s ease;
   }
 
@@ -60,7 +60,7 @@
     color: #fff;
     user-select: none;
     border-radius: 15px 15px 0 0;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background:#ae20a4;
   }
   #password{
     height: 30px;
@@ -79,8 +79,7 @@
       border-radius: 25px;
       transition: all 0.3s ease;
     }
-    .wrapper{
+    .wrapper1{
       width: 80%;
-      height: 43%;
     }
   }

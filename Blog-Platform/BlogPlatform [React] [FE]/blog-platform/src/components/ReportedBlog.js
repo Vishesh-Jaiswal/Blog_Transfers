@@ -124,14 +124,16 @@ function ReportedBlog() {
             <p className="author">------<i>{reportedBlog?.userEmail}</i>------</p>
           </Link>
         </div>
-        <div className="singleBlogContainer review">
-        <div className="contentofBlog">
-          <h2 className="titleofBlog">Report Review</h2>
-          <hr id="hrrule" />
-          <p id="reportReview"><b>Reported At:</b>{moment(reportedBlog?.reportedAt).format("DD/MM/YY HH:mm")}</p> 
-          <p id="reportReview"><b>Report By:</b> {reportedBlog?.reportedBy}</p>
-          <p id="reportReview"><b>Report Reason:</b></p>  <p>{reportedBlog?.reportReason}</p>
-        </div>
+        <div className="colorfill">
+          <div className="singleBlogContainer review">
+          <div className="contentofBlog">
+            <h2 className="titleofBlog">Report Review</h2>
+            <hr id="hrrule" />
+            <p id="reportReview"><b>Reported At:</b>{moment(reportedBlog?.reportedAt).format("DD/MM/YY HH:mm")}</p> 
+            <p id="reportReview"><b>Report By:</b> {reportedBlog?.reportedBy}</p>
+            <p id="reportReview"><b>Report Reason:</b></p>  <p>{reportedBlog?.reportReason}</p>
+          </div>
+          </div>
         </div>
       </div>
     </div>

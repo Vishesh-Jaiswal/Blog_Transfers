@@ -13,6 +13,7 @@ import GetReportedBlogs from './components/GetReportedBlogs';
 import GetReportedComments from './components/GetReportedComments';
 import ReportedBlog from './components/ReportedBlog';
 import ReportedComment from './components/ReportedComment';
+import ProtectedRouteForLogin from './ProtectedRouteForLogin';
 
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<LoginUser />} />
-          <Route path='/register' element={<RegisterUser/>}/>
+          <Route path='/' element={<ProtectedRouteForLogin><LoginUser /></ProtectedRouteForLogin>} />
+          <Route path='/register' element={<ProtectedRouteForLogin><RegisterUser/></ProtectedRouteForLogin>}/>
           <Route path='/homepage' element={<ProtectedRoute><Homepage/></ProtectedRoute>}/>
           <Route path='/profile/:userEmail' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
           <Route path="/blogs" element={<ProtectedRoute><NewBlog /></ProtectedRoute>} />

@@ -61,7 +61,7 @@ function LoginUser() {
                 <div className="title">
                     Login Form
                 </div>
-                <form className="loginForm row g-3">
+                <form className="loginForm">
                 <div className="field">
                     <input type="text" required value={userEmail}
                         onChange={(e) => { setUserEmail(e.target.value) }} />

@@ -9463,34 +9463,45 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vishe\\.nuget\\packages\\": {}
+    "C:\\Users\\2000112368\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\BlogShopAppTest.csproj",
+      "projectUniqueName": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\BlogShopAppTest.csproj",
       "projectName": "BlogShopAppTest",
-      "projectPath": "D:\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\BlogShopAppTest.csproj",
-      "packagesPath": "C:\\Users\\vishe\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\obj\\",
+      "projectPath": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\BlogShopAppTest.csproj",
+      "packagesPath": "C:\\Users\\2000112368\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogShopAppTest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\vishe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\2000112368\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj": {
-              "projectPath": "D:\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj"
+            "C:\\Users\\2000112368\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj": {
+              "projectPath": "C:\\Users\\2000112368\\Project\\Blog_Transfers\\Blog-Platform\\BlogSpotSolution\\BlogSpotSolution\\BlogSpotApp\\BlogSpotApp.csproj"
             }
           }
         }
@@ -9541,6 +9552,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.26, 6.0.26]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.26, 6.0.26]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.26, 6.0.26]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

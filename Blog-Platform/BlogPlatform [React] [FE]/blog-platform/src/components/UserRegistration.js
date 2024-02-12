@@ -110,7 +110,7 @@ function RegisterUser(){
     }
     
     return(
-        <div className="Main">
+        <div className="Main UserReg">
             <div className="wrapper regwrap">
             <div className="title regtitle">
             Register Now

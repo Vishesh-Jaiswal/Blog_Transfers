@@ -18,7 +18,7 @@ const LogoutButton = () => {
 
   return (
     <div className="MainLogout">
-            <div className="wrapper1 wrapper">
+            <div className="wrapper2 wrapper">
                 <div className="logoutConfirm title">
                     Are you sure you want to log out?
                 </div>

@@ -19,7 +19,7 @@
   color: #fff;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background:#ae20a4;
 }
 .wrapper .loginForm{
   padding: 10px 30px 50px 30px;
@@ -72,7 +72,7 @@
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+   background:#ae20a4;
   transition: all 0.3s ease;
 }
 .loginForm .field input[type="button"]:active{
@@ -92,11 +92,8 @@
 .loginForm .signup-link a:hover{
   text-decoration: underline;
 }
-.Main .logwrap{
-  height: 62% !important;
-}
-@media(max-width:800px){
-  .Main .logwrap{
-    height: 63% !important;
+@media(max-width:768px){
+  .logwrap{
+    width: 70%;
   }
 }
