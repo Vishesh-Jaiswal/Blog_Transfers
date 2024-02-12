@@ -34,7 +34,7 @@ function LoginUser() {
             return;
         }
  
-        axios.post("http://localhost:5273/api/Blogger/Login", {
+        const response=axios.post("http://localhost:5273/api/Blogger/Login", {
             userEmail: userEmail,
             password: password
         })
@@ -51,6 +51,8 @@ function LoginUser() {
             navigate('/homepage');
         })
         .catch((err)=>{
+            if(err.response && err.response.status===401)
+            alert(err.response.data)
             console.log(err)
         })
     }

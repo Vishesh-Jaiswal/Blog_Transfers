@@ -92,6 +92,8 @@ function RegisterUser(){
             navigate('/');
         })
         .catch((err)=>{
+            if(err.response && err.response.status === 400)
+            alert(err.response.data)
             console.log(err)
         })
     }
