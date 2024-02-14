@@ -114,55 +114,55 @@ function RegisterUser(){
     return(
         <div className="Main UserReg">
             <div className="wrapper regwrap">
-            <div className="title regtitle">
-            Register Now
-            </div>
-            <div className="registerForm">
-            <div className="field">
-                <input type="text" required value={userEmail}
-                    onChange={(e) => { setUserEmail(e.target.value) }} />
-                    {userEmailError && <label className="alert alert-danger">{userEmailError}</label>}
-                    {!userEmailError && validEmail && <label className="alert alert-danger">{validEmail}</label>}
-                    {!userEmailError && !validEmail && (<label>Email Address</label>)}
-            </div>
-            <div className="field">
-                <input type="text" required value={userName}
-                    onChange={(e) => {setUserName(e.target.value)}}/>
-                    {userNameError && <label className="alert alert-danger">{userNameError}</label>}
-                    {!userNameError && validName && <label className="alert alert-danger">{validName}</label>}
-                    {!userNameError && !validName && (<label>User Name</label>)}
-            </div>
-            <div className="field">
-                <input type="password" required value={password}
-                    onChange={(e) => { setPassword(e.target.value) }} />
-                    {passwordError && <label className="alert alert-danger">{passwordError}</label>}
-                <label>Password</label>
-            </div>
-            <div className="field">
-                    <input type="password" required  value={repassword}
-                    onChange={(e) => {setrePassword(e.target.value)}}/>
-                    {repasswordError && <label className="alert alert-danger">{repasswordError}</label>}
-                    <label>Re-Type Password</label>
-            </div>
-            {passMismatch && <label className="alert alert-danger">{passMismatch}</label>}
-            <div className="field">
-                <select className="form-select" onChange={(e)=>{setRole(e.target.value)}}>
-                    <option className="options" value="select">Select Role</option>
-                    {roles.map((r)=>
-                        <option value={r} key={r}>{r}</option>
-                    )}
-                </select>
-            </div>
-            {noRoleError && <label className="alert alert-danger">{noRoleError}</label>}
-            <div className="field">
-                <input type="button" value="Sign Up" onClick={signUp}/>
-            </div>
-            <div className="signin-link">
+                <div className="title regtitle">
+                    Register Now
+                </div>
+                <form className="registerForm">
+                    <div className="field">
+                        <input type="text" required value={userEmail}
+                            onChange={(e) => { setUserEmail(e.target.value) }} />
+                            {userEmailError && <label className="alert alert-danger">{userEmailError}</label>}
+                            {!userEmailError && validEmail && <label className="alert alert-danger">{validEmail}</label>}
+                            {!userEmailError && !validEmail && (<label>Email Address</label>)}
+                    </div>
+                    <div className="field">
+                        <input type="text" required value={userName}
+                            onChange={(e) => {setUserName(e.target.value)}}/>
+                            {userNameError && <label className="alert alert-danger">{userNameError}</label>}
+                            {!userNameError && validName && <label className="alert alert-danger">{validName}</label>}
+                            {!userNameError && !validName && (<label>User Name</label>)}
+                    </div>
+                    <div className="field">
+                        <input type="password" required value={password}
+                            onChange={(e) => { setPassword(e.target.value) }} />
+                            {passwordError && <label className="alert alert-danger">{passwordError}</label>}
+                        <label>Password</label>
+                    </div>
+                    <div className="field">
+                            <input type="password" required  value={repassword}
+                            onChange={(e) => {setrePassword(e.target.value)}}/>
+                            {repasswordError && <label className="alert alert-danger">{repasswordError}</label>}
+                            <label>Re-Type Password</label>
+                    </div>
+                    {passMismatch && <label className="alert alert-danger">{passMismatch}</label>}
+                    <div className="field">
+                        <select className="form-select" onChange={(e)=>{setRole(e.target.value)}}>
+                            <option className="options" value="select">Select Role</option>
+                            {roles.map((r)=>
+                                <option value={r} key={r}>{r}</option>
+                            )}
+                        </select>
+                    </div>
+                    {noRoleError && <label className="alert alert-danger">{noRoleError}</label>}
+                    <div className="field">
+                        <input type="button" value="Sign Up" onClick={signUp}/>
+                    </div>
+                    <div className="signin-link">
                         Already a member? <Link to="/">SignIn now</Link>
                     </div>
+                </form>
             </div>
         </div>
-     </div>
     );
 }
 

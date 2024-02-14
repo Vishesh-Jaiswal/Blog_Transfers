@@ -19,7 +19,6 @@ namespace OnlineBookStore.Controllers
             _bookService = bookService;
         }
 
-        [Authorize(Roles ="Admin")]
         [HttpPost]
         [Route("AddBook")]
         public ActionResult AddBook(Book book)

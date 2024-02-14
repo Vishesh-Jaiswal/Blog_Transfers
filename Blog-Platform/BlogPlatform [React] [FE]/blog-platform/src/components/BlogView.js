@@ -33,7 +33,6 @@ function BlogView() {
     try {
       const response = await axios.get(`http://localhost:5273/api/Comment/${blogId}`);
       setComments(response.data);
-      updatedCommentsResponse();
     } catch (error) {
       console.error("Error updating comments:", error);
     }
@@ -53,6 +52,7 @@ function BlogView() {
     setIsReportCommentModalOpen(false);
     setCommentReportedBoxOpen(true);
     setTimeout(()=>setCommentReportedBoxOpen(false),2000);
+    updatedCommentsResponse();
   }
 
   const handleReportBlog = (blogId) => {

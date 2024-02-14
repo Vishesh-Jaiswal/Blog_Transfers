@@ -4,6 +4,8 @@ import Register from './components/Register';
 import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AddBook from './components/AddBook';
+import GetAllBooks from './components/GetAllBooks';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/homepage' element={<Homepage />} />
           <Route path='/navbar' element={<Navbar />} />
+          <Route path='/addbook' element={<AddBook />} />
+          <Route path='/getbooks' element={<GetAllBooks />} />
         </Routes>
       </BrowserRouter>
     </div>

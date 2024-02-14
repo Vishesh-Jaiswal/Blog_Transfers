@@ -18,6 +18,11 @@ function LoginUser() {
         })
         .then((userData)=>{
             console.log(userData); 
+            var userEmail=userData.data.userEmail;
+            localStorage.setItem("userEmail",userEmail);
+            var userName=userData.data.userName;
+            localStorage.setItem("userName",userName);
+
             navigate('/homepage');
         })
         .catch((err)=>{
