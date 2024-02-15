@@ -1,0 +1,88 @@
+
+.flight-list-container {
+    width: 92%;
+    max-height: 100vh;
+    margin: 34px auto;
+}
+#EmplyFlightList{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-style: italic;
+}
+.PageTitle{
+    background-color: white;
+    color:#8216ce;
+    margin:0 0 16px 30px;
+    border-radius: 18px;
+    text-align: center;
+    height: 40px;
+    width: 93%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.back{
+    background-color: #bb87df;
+    height: 100vh;
+}
+.flightContents{
+    height: 80vh;
+    max-height: 80vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.flight-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 95%;
+}
+
+.flight-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 12px;
+    padding-left: 10px;
+}
+
+.flight-link{
+    text-decoration: none;
+    color: #8216ce;
+    
+}
+.datimes{
+    display: flex;
+    justify-content: space-between;
+}
+.flight-content {
+    background-color: white;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    padding:0 6px 0 10px;
+    max-height: 75px;
+    height: 75px;
+    border: none;
+    box-shadow: #555;
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.profileLink{
+    text-decoration: none;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  

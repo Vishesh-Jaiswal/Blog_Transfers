@@ -31,28 +31,34 @@ namespace FlightApp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FlightId"), 1L, 1);
 
                     b.Property<string>("Airlines")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Arrival")
+                    b.Property<DateTime?>("Arrival")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ArrivalAirport")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Departure")
+                    b.Property<DateTime?>("Departure")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DepartureAirport")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
+                    b.Property<int?>("Economy")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FristClass")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("bunisness")
+                        .HasColumnType("int");
 
                     b.HasKey("FlightId");
 
@@ -66,11 +72,18 @@ namespace FlightApp.Migrations
                     b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("UserName")
+                    b.Property<byte[]>("Key")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("Password")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserPassword")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

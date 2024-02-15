@@ -27,7 +27,7 @@ namespace FlightApp.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        [Route("DeleteFlight")]
+        [Route("DeleteFlight/{id}")]
         public ActionResult DeleteFlight(int id)
         {
             var result = _flightService.DeleteFlight(id);

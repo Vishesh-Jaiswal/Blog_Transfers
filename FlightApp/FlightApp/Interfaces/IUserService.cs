@@ -1,10 +1,11 @@
 ﻿using FlightApp.Models;
+using FlightApp.Models.DTOs;
 
 namespace FlightApp.Interfaces
 {
     public interface IUserService
     {
-        public User Login(User user);
-        public User Register(User user);
+        public UserDTO? Login(UserDTO user);
+        public UserDTO? Register(UserDTO user);
     }
 }

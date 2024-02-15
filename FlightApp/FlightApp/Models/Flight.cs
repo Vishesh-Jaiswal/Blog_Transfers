@@ -7,12 +7,15 @@ namespace FlightApp.Models
     {
         [Key]
         public int FlightId { get; set; }
-        public string Airlines { get; set; }=string.Empty;
-        public string DepartureAirport { get; set; } = string.Empty;
-        public string ArrivalAirport { get; set; } = string.Empty;
-        public DateTime Departure {  get; set; }
-        public DateTime Arrival { get; set; }
-        public double Price { get; set; }
+        public string? Airlines { get; set; }=string.Empty;
+        public string? DepartureAirport { get; set; } = string.Empty;
+        public string? ArrivalAirport { get; set; } = string.Empty;
+        public DateTime? Departure {  get; set; }
+        public DateTime? Arrival { get; set; }
+        public double? Price { get; set; }
+        public int? Economy { get; set; }
+        public int? bunisness { get; set; }
+        public int? FristClass { get; set; }
         public User? User { get; set; }
         public string? UserEmail { get; set; }
     }

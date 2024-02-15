@@ -1,17 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function GetAllBooks(){
     const [books,setBooks]=useState([]);
 
 
         const fetchBooks=async()=>{
-            const handleAGetallBooks=axios.get("http://localhost:5204/api/Book/GetAllBooks")
-            .then((event1)=>{
-                setBooks(event1);
-            })
-            setBooks(handleAGetallBooks|| []);
+            const handleAGetallBooks=await axios.get("http://localhost:5204/api/Book/GetAllBooks")
+            setBooks(handleAGetallBooks.data);
+       
         }
    
         
@@ -21,7 +19,8 @@ function GetAllBooks(){
             <ul>
                 {books.map((book)=>(
                     <li key={book.bookId}>
-                        {book.title}
+                        <Link to={`/getbookbyid/${book.bookId}`}>
+                        {book.title}</Link>
                     </li>
                 ))}
                 

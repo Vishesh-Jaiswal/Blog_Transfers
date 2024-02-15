@@ -1,5 +1,6 @@
 ﻿using FlightApp.Interfaces;
 using FlightApp.Models;
+using FlightApp.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
@@ -19,7 +20,7 @@ namespace FlightApp.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public ActionResult Register(User user)
+        public ActionResult Register(UserDTO user)
         {
             string message="";
             try
@@ -42,7 +43,7 @@ namespace FlightApp.Controllers
         }
         [HttpPost]
         [Route("Login")]
-        public ActionResult Login(User user)
+        public ActionResult Login(UserDTO user)
         {
             var result = _userService.Login(user);
             if (result != null)
