@@ -1,4 +1,5 @@
-﻿using FlightApp.Interfaces;
+﻿using FlightApp.Exceptions;
+using FlightApp.Interfaces;
 using FlightApp.Models;
 
 namespace FlightApp.Services
@@ -35,12 +36,20 @@ namespace FlightApp.Services
         public Flight GetById(int id)
         {
             var result= _repository.GetById(id);
+            if (result == null)
+            {
+                throw new CouldNotFetch();
+            }
             return result;
         }
 
         public Flight UpdateFlight(Flight flight)
         {
             var result= _repository.Update(flight);
+            if (result == null)
+            {
+                throw new CouldNotEdit();
+            }
             return result;
         }
     }

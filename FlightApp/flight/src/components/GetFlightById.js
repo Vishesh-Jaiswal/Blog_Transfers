@@ -12,10 +12,10 @@ function GetFlightById(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchBlog = async () => {
+        const fetchFlight = async () => {
           try {
-            const blogResponse = await axios.get(`http://localhost:5263/api/Flight/GetFlightById/${flightId}`);
-            setFlight(blogResponse.data);
+            const flightResponse = await axios.get(`http://localhost:5263/api/Flight/GetFlightById/${flightId}`);
+            setFlight(flightResponse.data);
     
               
           } catch (error) {
@@ -29,7 +29,7 @@ function GetFlightById(){
             }
           };
       
-        fetchBlog();
+          fetchFlight();
         }, [flightId]);
 
     const handleDelete=()=>{
@@ -50,22 +50,35 @@ function GetFlightById(){
             <div class="card extraForCard">
                 <div class="card-body">
                     <h5 class="card-title">{flight?.airlines}</h5>
-                    <p>Arrival:
+                    <div className="time">
+                      <p><b>Arrival:</b>
                       {flight?.arrival
                           ? moment(flight?.arrival).format("DD/MM/YY")
                           : "N/A"}
                       </p>
-                      <p>Departure:
+                      <p><b>Departure:</b>
                       {flight?.arrival
                           ? moment(flight?.departure).format("DD/MM/YY")
                           : "N/A"}
                       </p>
-                      <p>Departure:
-                     {flight?.depa}
+                    </div>
+                    <div className="time">
+                      <p><b>From:</b>
+                      {flight?.departureAirport	}
                       </p>
-     
+                      <p><b>To:</b>
+                      {flight?.arrivalAirport	}
+                      </p>
+                    </div>
+                    <div>
+                      <p>Economy:{flight?.economy}</p>
+                      <p>Business:{flight?.business}</p>
+                      <p>First Class:{flight?.firstClass}</p>
+                    </div>
+                    <div className="buttons">
                     <Link to={`/update/${flightId}`} class="btn btn-primary">Update Flight</Link>
                     <button class="btn btn-primary" onClick={handleDelete}>Delete Flight</button>
+                    </div>
                 </div>
             </div>
         </div>

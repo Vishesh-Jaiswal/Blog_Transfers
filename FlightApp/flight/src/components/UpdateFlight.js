@@ -14,34 +14,40 @@ function UpdateFlight(){
     const [price, setPrice]=useState("");
     const [economy,setEconomy]=useState("");
     const [business,setBusiness]=useState("");
-    const [fristClass,setfristClass]=useState("");
+    const [firstClass,setfristClass]=useState("");
     const [formerror,setfromError]=useState("");
     var currentEmail=localStorage.getItem('userEmail');
     const navigate = useNavigate();
 
     var checkUserData = ()=>{
         if(airlines===''){
-            setfromError("Please fill form correctly");
+            setfromError("Please fill form correctly: No Airline Entered");
+            setTimeout(()=> setfromError(""),4000);
             return false;
         }
         if(departureAirport===''){
-            setfromError("Please fill form correctly");
+            setfromError("Please fill form correctly: No DEP Airport");
+            setTimeout(()=> setfromError(""),4000);
             return false;
         }
         if(arrivalAirport===''){
-            setfromError("Please fill form correctly");
+            setfromError("Please fill form correctly: No Arr Airport");
+            setTimeout(()=> setfromError(""),4000);
             return false;
         }
         if(arrival===''){
-            setfromError("Please fill form correctly");
+            setfromError("Please fill form correctly: No Arrival Time");
+            setTimeout(()=> setfromError(""),4000);
             return false;
         }
         if(departure===''){
-            setfromError("Please fill form correctly");
+            setfromError("Please fill form correctly: No Dep Time");
+            setTimeout(()=> setfromError(""),4000);
             return false;
         }
-        if(price==='' || economy==='' || business==='' || fristClass===''){
-            setfromError("Please fill form correctly");
+        if(price==='' || economy==='' || business==='' || firstClass===''){
+            setfromError("Please fill form correctly: Fill Seat and Price");
+            setTimeout(()=> setfromError(""),4000);
             return false;
         }
     }
@@ -65,7 +71,7 @@ function UpdateFlight(){
             price:price,
             economy:economy,
             business:business,
-            fristClass:fristClass,
+            firstClass:firstClass,
             userEmail:currentEmail
         })
         .then(()=>{
@@ -82,6 +88,7 @@ function UpdateFlight(){
             <Navbar/>
             <form>
             <div class="form-row align-items-center extra">
+                {formerror}
             <div class="col-auto my-1">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">AirLines</label>
                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" value={airlines} onChange={(e) => {setAirLines(e.target.value)}}>
@@ -97,7 +104,7 @@ function UpdateFlight(){
                     <div class="input-group-prepend">
                  
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Departure Airport"
+                    <input required type="text" class="form-control" id="inlineFormInputGroup" placeholder="Departure Airport"
                     value={departureAirport} onChange={(e) => {setdepartureAirport(e.target.value)}}/>
                 </div>
                 </div>
@@ -155,7 +162,7 @@ function UpdateFlight(){
                     <div class="input-group-prepend">
                     </div>
                     <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="First Class"
-                    value={fristClass} onChange={(e) => {setfristClass(e.target.value)}}/>
+                    value={firstClass} onChange={(e) => {setfristClass(e.target.value)}}/>
                 </div>
                 </div>
                 <div class="col-auto">

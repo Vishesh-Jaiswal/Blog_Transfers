@@ -13,12 +13,53 @@ function AddFlight(){
     const [price, setPrice]=useState("");
     const [economy,setEconomy]=useState("");
     const [business,setBusiness]=useState("");
-    const [fristClass,setfristClass]=useState("");
+    const [firstClass,setfristClass]=useState("");
     var currentEmail=localStorage.getItem('userEmail');
+    const [formerror,setfromError]=useState("");
     const navigate = useNavigate();
+
+    var checkUserData = ()=>{
+        if(airlines===''){
+            setfromError("Please fill form correctly: No Airline Entered");
+            setTimeout(()=> setfromError(""),4000);
+            return false;
+        }
+        if(departureAirport===''){
+            setfromError("Please fill form correctly: No DEP Airport");
+            setTimeout(()=> setfromError(""),4000);
+            return false;
+        }
+        if(arrivalAirport===''){
+            setfromError("Please fill form correctly: No Arr Airport");
+            setTimeout(()=> setfromError(""),4000);
+            return false;
+        }
+        if(arrival===''){
+            setfromError("Please fill form correctly: No Arrival Time");
+            setTimeout(()=> setfromError(""),4000);
+            return false;
+        }
+        if(departure===''){
+            setfromError("Please fill form correctly: No Dep Time");
+            setTimeout(()=> setfromError(""),4000);
+            return false;
+        }
+        if(price==='' || economy==='' || business==='' || firstClass===''){
+            setfromError("Please fill form correctly: Fill Seat and Price");
+            setTimeout(()=> setfromError(""),4000);
+            return false;
+        }
+    }
 
     const handleAddFlight=(event)=>{
         event.preventDefault();
+        var checkData = checkUserData();
+        if(checkData===false)
+        {
+            alert('please check your data')
+            return;
+        }
+
 
         axios.post("http://localhost:5263/api/Flight/AddFlight",{
             airlines:airlines,
@@ -29,7 +70,7 @@ function AddFlight(){
             price:price,
             economy:economy,
             business:business,
-            fristClass:fristClass
+            firstClass:firstClass
         })
         .then(()=>{
             alert('Flight Added Successfully');
@@ -44,6 +85,7 @@ function AddFlight(){
         <div>
             <Navbar/>
             <form>
+                {formerror}
             <div class="form-row align-items-center extra">
             <div class="col-auto my-1">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">AirLines</label>
@@ -118,7 +160,7 @@ function AddFlight(){
                     <div class="input-group-prepend">
                     </div>
                     <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="First Class"
-                    value={fristClass} onChange={(e) => {setfristClass(e.target.value)}}/>
+                    value={firstClass} onChange={(e) => {setfristClass(e.target.value)}}/>
                 </div>
                 </div>
                 <div class="col-auto">

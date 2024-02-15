@@ -99,7 +99,7 @@ function RegisterUser(){
     return(
         <div class="wrapper bg-white">
             <div class="h2 text-center">Flight Management</div>
-            <div class="h4 text-muted text-center pt-2">Enter your login details</div>
+            <div class="h4 text-muted text-center pt-2">Register With Us</div>
             <form class="pt-3">
             <div className="form-group py-2"><div class="input-field"> <span class="far fa-user p-2"></span>
                         <input type="text" required value={userEmail}

@@ -14,8 +14,8 @@ namespace FlightApp.Models
         public DateTime? Arrival { get; set; }
         public double? Price { get; set; }
         public int? Economy { get; set; }
-        public int? bunisness { get; set; }
-        public int? FristClass { get; set; }
+        public int? Business { get; set; }
+        public int? FirstClass { get; set; }
         public User? User { get; set; }
         public string? UserEmail { get; set; }
     }

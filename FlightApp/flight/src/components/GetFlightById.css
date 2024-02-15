@@ -3,3 +3,11 @@
     margin: 20px auto;
     height: 80vh;
 }
+.time{
+    display: flex;
+    justify-content: space-between;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
